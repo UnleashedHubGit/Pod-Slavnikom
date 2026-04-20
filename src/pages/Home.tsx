@@ -393,7 +393,7 @@ export default function Home() {
       <section className="py-0 px-0 bg-brand-cream relative">
         <div className="w-full h-[600px] relative group">
           <iframe 
-            src="https://www.google.com/maps?q=Gosti%C5%A1%C4%8De%20s%20preno%C4%8Di%C5%A1%C4%8Di%20Pod%20Slavnikom&hl=si&z=16&output=embed" 
+            src="https://www.google.com/maps?q=Gosti%C5%A1%C4%8De%20s%20preno%C4%8Di%C5%A1%C4%8Di%20Pod%20Slavnikom&hl=sl&z=16&output=embed" 
             width="100%" 
             height="100%" 
             style={{ border: 0 }} 
@@ -403,7 +403,7 @@ export default function Home() {
             className="w-full h-full"
           ></iframe>
           <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.1)]"></div>
-          <div className="absolute top-10 left-10 p-12 bg-brand-wood/90 backdrop-blur-xl text-brand-cream rounded-[60px] luxury-shadow border border-white/5 max-w-sm hidden md:block">
+          <div className="absolute bottom-10 right-10 p-12 bg-brand-wood/90 backdrop-blur-xl text-brand-cream rounded-[60px] luxury-shadow border border-white/5 max-w-sm hidden md:block">
             <p className="text-[10px] uppercase tracking-[0.5em] font-bold text-brand-gold mb-6 font-display">Naša lokacija</p>
             <h3 className="text-3xl font-serif italic mb-6 leading-tight">Podgorje 1, <br />Koper 6216</h3>
             <div className="w-12 h-[1px] bg-brand-gold mb-8"></div>

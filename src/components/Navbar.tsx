@@ -60,22 +60,14 @@ export default function Navbar() {
 
           {/* Logo Center */}
           <Link to="/" className="flex flex-col items-center group px-12 scale-90 md:scale-100">
-            <div className="mb-2 opacity-30 group-hover:opacity-60 transition-all duration-700 group-hover:-translate-y-1">
-              <svg width="45" height="28" viewBox="0 0 40 25" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-brand-gold">
-                <path d="M20 25L10 15H30L20 25Z" fill="currentColor" fillOpacity="0.4" />
-                <path d="M15 10C15 10 12 3 7 1M15 10C15 10 17 5 21 3M25 10C25 10 28 3 33 1M25 10C25 10 23 5 19 3" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
-              </svg>
+            <div className="h-16 md:h-20 transition-all duration-700 group-hover:scale-105">
+              <img 
+                src={useWhiteText ? "https://return.imindevelopment.com/wp-content/uploads/2026/04/Pod-Slavnikom-logo-white-scaled.png" : "https://return.imindevelopment.com/wp-content/uploads/2026/04/Pod-Slavnikom-logo-black-scaled.png"} 
+                alt="Pod Slavnikom" 
+                className="h-full w-auto object-contain"
+                referrerPolicy="no-referrer"
+              />
             </div>
-            <span className={`font-serif tracking-widest uppercase font-black transition-all duration-1000 group-hover:scale-105 ${
-              scrolled ? 'text-xl text-brand-wood' : 'text-2xl text-white drop-shadow-md'
-            }`}>
-              Pod Slavnikom
-            </span>
-            {!scrolled && (
-              <div className="flex items-center gap-2 mt-1 opacity-60 animate-in fade-in duration-1000">
-                <span className="text-[7px] uppercase tracking-[0.6em] font-bold text-white font-display">Gostilna s prenočišči</span>
-              </div>
-            )}
           </Link>
 
           {/* Right Nav */}

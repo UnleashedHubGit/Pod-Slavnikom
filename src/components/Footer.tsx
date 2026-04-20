@@ -9,7 +9,14 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-8">
         <div className="space-y-8">
           <div className="space-y-4">
-            <h3 className="font-serif text-3xl tracking-tight">Pod Slavnikom</h3>
+            <Link to="/" className="block h-16 w-fit mb-4">
+              <img 
+                src="https://return.imindevelopment.com/wp-content/uploads/2026/04/Pod-Slavnikom-logo-white-scaled.png" 
+                alt="Pod Slavnikom" 
+                className="h-full w-auto object-contain"
+                referrerPolicy="no-referrer"
+              />
+            </Link>
             <div className="w-12 h-[1px] bg-brand-gold"></div>
           </div>
           <p className="text-brand-cream/60 text-sm leading-relaxed max-w-xs font-light">

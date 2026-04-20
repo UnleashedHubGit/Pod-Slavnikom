@@ -52,7 +52,7 @@ export default function Contact() {
                  {/* Map Framing */}
                  <div className="w-full aspect-[16/10] rounded-[40px] overflow-hidden shadow-2xl relative border border-white/5 mb-12">
                     <iframe 
-                      src="https://www.google.com/maps?q=Gosti%C5%A1%C4%8De%20s%20preno%C4%8Di%C5%A1%C4%8Di%20Pod%20Slavnikom&hl=si&z=16&output=embed" 
+                      src="https://www.google.com/maps?q=Gosti%C5%A1%C4%8De%20s%20preno%C4%8Di%C5%A1%C4%8Di%20Pod%20Slavnikom&hl=sl&z=16&output=embed" 
                       width="100%" 
                       height="100%" 
                       style={{ border: 0 }} 
