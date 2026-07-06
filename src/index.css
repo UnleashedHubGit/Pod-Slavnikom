@@ -1,19 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "EB Garamond", serif;
-  --font-display: "Space Grotesk", sans-serif;
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-display: "Montserrat", sans-serif;
   --font-script: "Great Vibes", cursive;
 
-  --color-brand-cream: #faf9f6;
-  --color-brand-wood: #2D1B10;
-  --color-brand-olive: #4c5444;
-  --color-brand-stone: #6b6b66;
-  --color-brand-warm-gray: #f5f2ed;
-  --color-brand-gold: #c29b61;
-  --color-brand-moss: #3a4134;
+  --color-brand-cream: #f5f0e8;
+  --color-brand-cream-soft: #faf6ef;
+  --color-brand-wood: #1a2a1e; /* Forest */
+  --color-brand-wood-deep: #0f1a13; /* Forest deep */
+  --color-brand-olive: #2d4a2f; /* Moss */
+  --color-brand-stone: #5a5a5a;
+  --color-brand-warm-gray: #faf6ef;
+  --color-brand-gold: #c4a35a;
+  --color-brand-gold-light: #e8c97a;
+  --color-brand-gold-dim: #8a7340;
+  --color-brand-bark: #3d2b1a;
+  --color-brand-bark-deep: #281a0f;
 }
 
 @layer base {

@@ -1,40 +1,83 @@
 import { motion } from 'motion/react';
-import { Gift, Heart, Coffee, Star, ShoppingBag, ArrowRight } from 'lucide-react';
+import { Info, Sparkles, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const vouchers = [
+const packageList = [
   {
-    title: 'Kulinarično doživetje',
-    type: 'Veerja s 4 hodi',
-    price: '45 €',
-    desc: 'Najboljše iz naše kuhinje v štirih dejanjih. Primerno za rojstne dneve in obletnice.',
-    icon: Coffee,
-    color: 'bg-orange-50'
+    name: 'Vikend Relax',
+    badge: 'Vikend Relax',
+    image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=900&q=80',
+    tagline: 'Telo se ustavi prej kot misli.',
+    sub: 'Dva dni brez ur',
+    price: '350€',
+    priceLabel: '2 noči · za 2',
+    features: [
+      '2 noči v izbrani sobi z zajtrkom',
+      'Večerja: meni Gozdna pojedina',
+      'Zasebni wellness'
+    ],
+    featured: false
   },
   {
-    title: 'SPA Dan za dva',
-    type: '3-urna privatna sprostitev',
-    price: '80 €',
-    desc: 'Podarite mir. Paket vključuje savno, jacuzzi, penino in sadje v popolni intimi.',
-    icon: Star,
-    color: 'bg-blue-50'
+    name: 'Vikend & SPA',
+    badge: 'Najbolj iskan',
+    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900&q=80',
+    tagline: 'Vikend, ki diši po gozdu in pari.',
+    sub: 'Smreka in para',
+    price: '280€',
+    priceLabel: '2 noči · za 2',
+    features: [
+      '2 noči v izbrani sobi z zajtrkom',
+      'Zasebni wellness (savna, parna kopel, jacuzzi)',
+      'Mir, rezerviran samo za vaju'
+    ],
+    featured: true
   },
   {
-    title: 'Gourmet vikend paket',
-    type: 'Nočitev + večerja + SPA',
-    price: '185 €',
-    desc: 'Popoln vikend oddih. Vključuje nočitev v sobi št. 6, kulinarično razvajanje in SPA.',
-    icon: Heart,
-    color: 'bg-rose-50'
+    name: 'Divja eleganca',
+    badge: 'Bear & Stay',
+    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80',
+    tagline: 'Ena noč in divjačina, kakršne drugje ne najdeš.',
+    sub: 'Bear & Stay',
+    price: '200€',
+    priceLabel: '1 noč · za 2',
+    features: [
+      '1 noč v izbrani sobi z zajtrkom',
+      'Večerja: meni Divja eleganca'
+    ],
+    featured: false
   },
   {
-    title: 'Darilni bon poljubne vrednosti',
-    type: 'Vrednostni bon',
-    price: 'od 20 €',
-    desc: 'Naj si obdarovanec sam izbere svojo najljubšo izkušnjo pri nas.',
-    icon: Gift,
-    color: 'bg-brand-warm-gray'
+    name: 'Medvedja večerja',
+    badge: '🐻 Enkrat na leto',
+    image: 'https://images.unsplash.com/photo-1546964124-0cce460f38ef?w=900&q=80',
+    tagline: 'Edinstven kulinarični ritual v kamniti kleti.',
+    sub: 'La Cena dell\'Orso',
+    price: 'Na povpraševanje',
+    priceLabel: 'Sezonsko',
+    features: [
+      '1 noč v izbrani sobi z zajtrkom',
+      'Mesto pri Medvedji večerji (sezonsko, omejeno)',
+      'Rezervacija obvezna vnaprej'
+    ],
+    featured: false
   }
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+};
 
 export default function Packages() {
   return (
@@ -42,108 +85,111 @@ export default function Packages() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
       className="pt-32"
     >
-      <section className="px-6 mb-32 max-w-[1400px] mx-auto text-center overflow-hidden">
-        <div className="relative py-20">
-          <span className="text-brand-gold uppercase tracking-[0.6em] text-[9px] font-bold block mb-10 font-display">Darilo doživetij</span>
-          <h1 className="text-6xl md:text-[90px] font-serif mb-12 max-w-5xl mx-auto leading-[0.85] tracking-tighter italic">Podarite spomine, ki <br/> ostanejo.</h1>
-          <div className="w-20 h-[1px] bg-brand-gold mx-auto mb-12"></div>
-          <p className="text-brand-stone text-xl max-w-2xl mx-auto leading-relaxed font-serif italic">
-            Iščete popolno darilo za svoje bližnje, prijatelje ali poslovne partnerje? Izberite enega izmed naših butičnih paketov ali vrednostni bon poljubne vrednosti.
-          </p>
-        </div>
+      {/* Intro Header */}
+      <section className="px-6 py-20 max-w-7xl mx-auto text-center space-y-6 relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-brand-gold/5 blur-[80px] rounded-full pointer-events-none"></div>
+        <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-bold block font-display">Paketi &amp; doživetja</span>
+        <h1 className="text-4xl md:text-6xl font-serif text-brand-wood leading-tight">
+          Združimo vse, kar je <br />
+          <span className="italic text-brand-gold font-serif">najlepše.</span>
+        </h1>
+        <div className="w-16 h-[1px] bg-brand-gold mx-auto"></div>
+        <p className="text-brand-stone text-xl leading-relaxed font-serif italic font-light max-w-2xl mx-auto">
+          Sobo, savno, večerjo, gozd. Tri kombinacije, ki imajo smisel. Vsaka prilagojena za drugačno priložnost.
+        </p>
       </section>
 
-      {/* Vouchers Grid - Refined Layout */}
-      <section className="px-6 max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mb-40">
-        {vouchers.map((voucher, idx) => (
-          <motion.div 
-            key={voucher.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: idx * 0.1 }}
-            viewport={{ once: true }}
-            className="group relative bg-brand-warm-gray/50 rounded-[60px] p-10 md:p-16 flex flex-col lg:flex-row gap-12 items-center border border-brand-wood/5 hover:bg-white hover:scale-[1.02] transition-all duration-700 luxury-shadow"
-          >
-            <div className="w-28 h-28 bg-white rounded-[40px] flex items-center justify-center shrink-0 shadow-xl border border-brand-wood/5 group-hover:rotate-6 transition-transform duration-700">
-              <voucher.icon className="w-10 h-10 text-brand-gold" />
-            </div>
-            <div className="flex-grow text-center lg:text-left">
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
-                <div>
-                  <span className="text-brand-gold text-[9px] uppercase tracking-widest font-black block mb-2 font-display">{voucher.type}</span>
-                  <h3 className="text-3xl font-serif tracking-tight">{voucher.title}</h3>
+      {/* Grid of Packages */}
+      <section className="py-16 px-6 max-w-7xl mx-auto relative z-10">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch"
+        >
+          {packageList.map((pkg, idx) => (
+            <motion.div 
+              key={idx} 
+              variants={cardVariants}
+              whileHover={{ y: -8, transition: { duration: 0.4 } }}
+              className={`flex flex-col h-full bg-white rounded-[40px] overflow-hidden border transition-all duration-500 luxury-shadow group relative ${
+                pkg.featured 
+                  ? 'border-brand-gold border-2 lg:-translate-y-4' 
+                  : 'border-brand-gold/10 hover:border-brand-gold/40'
+              }`}
+            >
+              {pkg.featured && (
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-wood text-[8px] uppercase tracking-[0.25em] font-bold py-1.5 px-4 rounded-full z-20 shadow-md flex items-center gap-1">
+                  <Sparkles className="w-2.5 h-2.5" /> {pkg.badge}
                 </div>
-                <span className="text-4xl font-serif text-brand-wood italic">{voucher.price}</span>
+              )}
+
+              {/* Card Image */}
+              <div className="aspect-[16/11] w-full overflow-hidden relative bg-brand-bark">
+                <img 
+                  src={pkg.image} 
+                  className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
+                  alt={pkg.name} 
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                {!pkg.featured && (
+                  <span className="absolute top-6 left-6 text-[9px] uppercase tracking-[0.2em] font-bold py-2 px-5 rounded-full shadow-lg bg-brand-wood text-brand-gold">
+                    {pkg.badge}
+                  </span>
+                )}
               </div>
-              <p className="text-brand-stone text-base mb-10 leading-relaxed font-light font-serif italic">
-                {voucher.desc}
-              </p>
-              <button className="inline-flex items-center gap-4 bg-brand-wood text-white px-10 py-5 rounded-full text-[10px] uppercase tracking-[0.3em] font-bold font-display hover:bg-brand-gold hover:scale-105 transition-all duration-500 shadow-2xl">
-                Izberite bon <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
-              </button>
-            </div>
-          </motion.div>
-        ))}
-      </section>
 
-      {/* Custom Packages - Editorial Finish */}
-      <section className="bg-brand-wood text-brand-cream py-48 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-32 items-center relative z-10">
-          <div>
-            <span className="text-brand-gold text-[10px] uppercase tracking-[0.5em] font-bold block mb-10 font-display">Dogodki po meri</span>
-            <h2 className="text-6xl md:text-8xl font-serif mb-12 text-white leading-[0.85] tracking-tight italic">Paket, ustvarjen <br/> samo za vas.</h2>
-            <p className="text-brand-cream/50 text-xl mb-16 leading-relaxed font-serif max-w-lg">
-              Načrtujete poseben dogodek, praznovanje ali team building? Z veseljem bomo pripravili ponudbo, ki bo vključevala kulinarične užitke, nastanitev in SPA po vaših željah.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-16">
-              {[
-                { t: 'Individualen pristop', d: 'Vsak detajl dogodka prilagodimo.' },
-                { t: 'Unikaten meni', d: 'Kuhinja, ki sledi vašim željam.' },
-                { t: 'Popolna zasebnost', d: 'Možnost ekskluzivnega najema.' },
-                { t: 'Prenočišče & SPA', d: 'Brezskrbno bivanje za vse.' }
-              ].map((item, i) => (
-                <div key={i} className="flex flex-col gap-2">
-                   <h4 className="text-brand-gold font-bold font-display uppercase tracking-widest text-xs">{item.t}</h4>
-                   <p className="text-sm text-brand-cream/40 font-light">{item.d}</p>
+              {/* Card Body */}
+              <div className="p-8 flex-grow flex flex-col justify-between space-y-8">
+                <div className="space-y-4 flex-grow">
+                  <span className="text-[10px] uppercase tracking-widest font-bold text-brand-gold italic block font-serif">
+                    {pkg.sub}
+                  </span>
+                  <h3 className="font-serif text-2xl text-brand-wood font-bold">{pkg.name}</h3>
+                  <p className="text-brand-gold-dim text-sm italic font-serif leading-relaxed">{pkg.tagline}</p>
+                  
+                  <ul className="space-y-3 pt-4 border-t border-brand-gold/10 flex-grow">
+                    {pkg.features.map((feature, fIdx) => (
+                      <li key={fIdx} className="text-brand-stone text-xs leading-relaxed flex items-start gap-2">
+                        <Check className="w-3.5 h-3.5 text-brand-gold shrink-0 mt-0.5" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              ))}
-            </div>
-            <button className="bg-brand-gold text-brand-wood px-14 py-6 rounded-full text-[10px] uppercase tracking-[0.3em] font-bold font-display hover:bg-white hover:scale-105 transition-all duration-500 luxury-shadow">Pošljite povpraševanje</button>
-          </div>
-          <div className="relative group">
-            <div className="rounded-[100px] overflow-hidden aspect-square lg:aspect-[4/5] shadow-2xl relative border-8 border-white/5">
-              <img src="https://return.imindevelopment.com/wp-content/uploads/2026/04/715205411.jpg" className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-110" alt="Darilo" referrerPolicy="no-referrer" />
-              <div className="absolute inset-0 bg-brand-wood/10 group-hover:bg-transparent transition-colors"></div>
-            </div>
-            <div className="absolute top-1/2 -right-12 -translate-y-1/2 w-48 h-48 bg-brand-gold rounded-full luxury-shadow flex items-center justify-center p-8 text-brand-wood text-center shadow-2xl skew-x-3 hidden md:flex border-4 border-brand-wood/10 animate-pulse-slow">
-               <span className="text-[10px] uppercase font-black tracking-widest leading-tight font-display">Najboljše iz Slovenije</span>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* How it works - Visual Steps */}
-      <section className="py-48 px-6 max-w-[1400px] mx-auto">
-        <div className="text-center mb-32">
-          <span className="text-brand-gold text-[10px] uppercase tracking-[0.5em] font-bold block mb-4 font-display">Enostavno</span>
-          <h2 className="text-6xl font-serif tracking-tight italic">Kako do darila?</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-24 text-center">
-          {[
-            { n: '01', t: 'Izberite doživetje', d: 'Prebrskajte naše butične pakete ali izberite poljubno vrednost bona.' },
-            { n: '02', t: 'Osebna nota', d: 'Dodajte svoje podatke in poljubno osebno posvetilo obdarovancu.' },
-            { n: '03', t: 'Takojšen prejem', d: 'Po varnem plačilu bon prejmete v PDF obliki na vaš e-naslov.' }
-          ].map((item, i) => (
-            <div key={i} className="group flex flex-col items-center">
-               <span className="font-serif text-8xl text-brand-gold/10 mb-10 group-hover:text-brand-gold/30 transition-colors duration-700">{item.n}</span>
-               <h4 className="text-2xl font-serif mb-6 italic tracking-tight">{item.t}</h4>
-               <div className="w-12 h-[1px] bg-brand-gold/30 mb-8 mx-auto group-hover:w-20 transition-all"></div>
-               <p className="text-brand-stone text-base leading-relaxed font-light max-w-xs">{item.d}</p>
-            </div>
+                {/* Card Footer */}
+                <div className="pt-6 border-t border-brand-gold/10 flex items-center justify-between gap-4">
+                  <div>
+                    <span className="text-[8px] uppercase tracking-widest text-brand-stone font-bold font-display block">
+                      {pkg.priceLabel}
+                    </span>
+                    <span className="font-serif text-2xl text-brand-wood font-black leading-none">
+                      {pkg.price}
+                    </span>
+                  </div>
+                  <Link 
+                    to="/kontakt" 
+                    className="px-5 py-3 bg-brand-wood text-white rounded-full font-bold uppercase tracking-widest text-[9px] hover:bg-brand-gold hover:text-brand-wood transition-colors font-display shadow-sm"
+                  >
+                    Rezerviraj
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
           ))}
+        </motion.div>
+
+        {/* Small Notes in Slate Gray */}
+        <div className="mt-20 flex items-center gap-4 justify-center text-xs text-brand-stone italic bg-brand-cream-soft p-6 rounded-3xl max-w-3xl mx-auto border border-brand-gold/15 luxury-shadow">
+          <Info className="w-5 h-5 text-brand-gold shrink-0" />
+          <p className="leading-relaxed">
+            Igor: dopolni točno vsebino vsakega paketa (število wellness terminov, kateri meni, doplačila). Cene 350 / 280 / 200 € so postavljene po dogovoru.
+          </p>
         </div>
       </section>
     </motion.div>

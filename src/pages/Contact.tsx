@@ -1,16 +1,33 @@
 import { motion } from 'motion/react';
 import { Phone, Mail, MapPin, Instagram, Facebook, Send } from 'lucide-react';
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+};
+
 export default function Contact() {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
       className="pt-32"
     >
       <section className="px-6 mb-40 max-w-[1400px] mx-auto overflow-hidden">
         <div className="text-center pt-24 mb-32 relative">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-84 h-84 bg-brand-gold/5 blur-[100px] rounded-full pointer-events-none"></div>
           <span className="text-brand-gold uppercase tracking-[0.6em] text-[9px] font-bold block mb-10 font-display">Kontakt & Lokacija</span>
           <h1 className="text-6xl md:text-[90px] font-serif mb-12 max-w-5xl mx-auto leading-[0.85] tracking-tighter italic">Z veseljem vas <br /> pričakujemo.</h1>
           <div className="w-20 h-[1px] bg-brand-gold mx-auto mb-12"></div>
@@ -19,23 +36,29 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start relative z-10"
+        >
           {/* Contact Details - Editorial Columns */}
-          <div className="lg:col-span-5 space-y-16">
+          <motion.div variants={cardVariants} className="lg:col-span-5 space-y-16">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
               <div className="group">
                 <span className="text-brand-gold text-[9px] uppercase tracking-widest font-black block mb-6 font-display">Telefonska številka</span>
-                <a href="tel:+38656870170" className="text-2xl font-serif text-brand-wood hover:text-brand-gold transition-colors duration-500 italic block underline-offset-8 decoration-brand-gold/20 hover:decoration-brand-gold">+386 5 687 01 70</a>
-                <p className="text-xs text-brand-stone/60 mt-4 font-light">Za takojšnje rezervacije in vprašanja.</p>
+                <a href="tel:+38641321379" className="text-2xl font-serif text-brand-wood hover:text-brand-gold transition-colors duration-500 italic block underline-offset-8 decoration-brand-gold/20 hover:decoration-brand-gold">+386 41 321 379</a>
+                <p className="text-xs text-brand-stone/60 mt-4 font-light font-sans">Za takojšnje rezervacije in vprašanja.</p>
               </div>
               <div className="group">
                 <span className="text-brand-gold text-[9px] uppercase tracking-widest font-black block mb-6 font-display">Elektronska pošta</span>
-                <a href="mailto:podslavnikom@gmail.com" className="text-2xl font-serif text-brand-wood hover:text-brand-gold transition-colors duration-500 italic block underline-offset-8 decoration-brand-gold/20 hover:decoration-brand-gold">podslavnikom@gmail.com</a>
-                <p className="text-xs text-brand-stone/60 mt-4 font-light">Za povpraševanja in darilne bone.</p>
+                <a href="mailto:info@podslavnikom.si" className="text-2xl font-serif text-brand-wood hover:text-brand-gold transition-colors duration-500 italic block underline-offset-8 decoration-brand-gold/20 hover:decoration-brand-gold">info@podslavnikom.si</a>
+                <p className="text-xs text-brand-stone/60 mt-4 font-light font-sans">Za povpraševanja in darilne bone.</p>
               </div>
             </div>
 
-            <div className="bg-brand-wood text-brand-cream p-16 rounded-[60px] luxury-shadow relative overflow-hidden group">
+            <div className="bg-brand-wood text-brand-cream p-16 rounded-[60px] luxury-shadow relative overflow-hidden group border border-brand-gold/15">
                <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
                <div className="relative z-10">
                  <div className="flex items-start gap-6 mb-12">
@@ -44,43 +67,43 @@ export default function Contact() {
                     </div>
                     <div>
                       <span className="text-brand-gold text-[9px] uppercase tracking-widest font-black block mb-2 font-display">Naš naslov</span>
-                      <h4 className="font-serif text-3xl italic tracking-tight leading-none mb-3">Podgorje 1, <br/> Koper 6216</h4>
+                      <h4 className="font-serif text-3xl italic tracking-tight leading-none mb-3">Podgorje 1, <br/> 6216 Podgorje</h4>
                       <p className="text-brand-cream/40 text-xs font-light">Slovenija — Ob vznožju Slavnika</p>
                     </div>
                  </div>
                  
-                 {/* Map Framing */}
-                 <div className="w-full aspect-[16/10] rounded-[40px] overflow-hidden shadow-2xl relative border border-white/5 mb-12">
-                    <iframe 
-                      src="https://www.google.com/maps?q=Gosti%C5%A1%C4%8De%20s%20preno%C4%8Di%C5%A1%C4%8Di%20Pod%20Slavnikom&hl=sl&z=16&output=embed" 
-                      width="100%" 
-                      height="100%" 
-                      style={{ border: 0 }} 
-                      allowFullScreen={true} 
-                      loading="lazy" 
-                      referrerPolicy="no-referrer-when-downgrade"
-                      className="w-full h-full"
-                    ></iframe>
-                 </div>
+                  {/* Map Framing */}
+                  <div className="w-full aspect-[16/10] rounded-[40px] overflow-hidden shadow-2xl relative border border-white/5 mb-12">
+                     <iframe 
+                       src="https://maps.google.com/maps?q=45.536098,13.945037(Gosti%C5%A1%C4%8De%20s%20preno%C4%8Di%C5%A1%C4%8Di%20Pod%20Slavnikom)&hl=sl&z=15&output=embed"
+                       width="100%" 
+                       height="100%" 
+                       style={{ border: 0 }} 
+                       allowFullScreen={true} 
+                       loading="lazy" 
+                       referrerPolicy="no-referrer-when-downgrade"
+                       className="w-full h-full"
+                     ></iframe>
+                  </div>
                  
                  <div className="flex flex-col sm:flex-row gap-6">
-                   <a href="https://share.google/ouZrP5566c06oagoZ" target="_blank" rel="noopener noreferrer" className="flex-1 bg-brand-gold text-brand-wood px-8 py-5 rounded-full text-[10px] uppercase tracking-[0.3em] font-bold font-display text-center hover:bg-white transition-all duration-500 luxury-shadow">Odpri v Google Maps</a>
-                   <div className="flex gap-4 justify-center">
-                      <a href="#" className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-wood hover:border-brand-gold transition-all duration-500"><Instagram className="w-5 h-5" /></a>
-                      <a href="#" className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-wood hover:border-brand-gold transition-all duration-500"><Facebook className="w-5 h-5" /></a>
-                   </div>
+                    <a href="https://share.google/ouZrP5566c06oagoZ" target="_blank" rel="noopener noreferrer" className="flex-1 bg-brand-gold text-brand-wood px-8 py-5 rounded-full text-[10px] uppercase tracking-[0.3em] font-bold font-display text-center hover:bg-white transition-all duration-500 luxury-shadow">Odpri v Google Maps</a>
+                    <div className="flex gap-4 justify-center">
+                       <a href="#" className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-wood hover:border-brand-gold transition-all duration-500"><Instagram className="w-5 h-5" /></a>
+                       <a href="#" className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-wood hover:border-brand-gold transition-all duration-500"><Facebook className="w-5 h-5" /></a>
+                    </div>
                  </div>
                </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Form - Boutique Editorial Style */}
-          <div className="lg:col-span-7 bg-white p-10 md:p-20 rounded-[80px] luxury-shadow border border-brand-wood/5 relative">
+          <motion.div variants={cardVariants} className="lg:col-span-7 bg-white p-10 md:p-20 rounded-[80px] luxury-shadow border border-brand-wood/5 relative">
             <div className="absolute top-10 right-10 opacity-5">
                <Send className="w-24 h-24 text-brand-wood" />
             </div>
             <h3 className="text-4xl md:text-5xl font-serif mb-12 text-brand-wood italic tracking-tight">Pošljite sporočilo.</h3>
-            <form className="space-y-10">
+            <form className="space-y-10" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div className="space-y-4">
                   <label className="block text-[9px] uppercase tracking-[0.4em] font-black text-brand-gold font-display">Ime in priimek</label>
@@ -112,14 +135,14 @@ export default function Contact() {
                 <div className="pt-1">
                    <input type="checkbox" className="w-5 h-5 rounded accent-brand-gold" id="privacy" />
                 </div>
-                <label htmlFor="privacy" className="text-[10px] text-brand-stone leading-relaxed uppercase tracking-widest font-medium">Strinjam se z <a href="#" className="text-brand-gold underline decoration-brand-gold/20">varstvom osebnih podatkov</a> in pravili uporabe spletne strani.</label>
+                <label htmlFor="privacy" className="text-[10px] text-brand-stone leading-relaxed uppercase tracking-widest font-medium font-sans">Strinjam se z <a href="#" className="text-brand-gold underline decoration-brand-gold/20">varstvom osebnih podatkov</a> in pravili uporabe spletne strani.</label>
               </div>
-              <button className="w-full bg-brand-wood text-white px-12 py-8 rounded-full text-xs uppercase tracking-[0.5em] font-black font-display hover:bg-brand-gold hover:scale-[1.02] transition-all duration-500 luxury-shadow flex items-center justify-center gap-6">
+              <button type="submit" className="w-full bg-brand-wood text-white px-12 py-8 rounded-full text-xs uppercase tracking-[0.5em] font-black font-display hover:bg-brand-gold hover:text-brand-wood hover:scale-[1.02] transition-all duration-500 luxury-shadow flex items-center justify-center gap-6 group">
                 Pošljite sporočilo <Send className="w-5 h-5 transition-transform group-hover:translate-x-2 group-hover:-translate-y-2" />
               </button>
             </form>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* FAQ Sections - Refined Reveal */}

@@ -393,7 +393,7 @@ export default function Home() {
       <section className="py-0 px-0 bg-brand-cream relative">
         <div className="w-full h-[600px] relative group">
           <iframe 
-            src="https://www.google.com/maps?q=Gosti%C5%A1%C4%8De%20s%20preno%C4%8Di%C5%A1%C4%8Di%20Pod%20Slavnikom&hl=sl&z=16&output=embed" 
+            src="https://maps.google.com/maps?q=45.536098,13.945037(Gosti%C5%A1%C4%8De%20s%20preno%C4%8Di%C5%A1%C4%8Di%20Pod%20Slavnikom)&hl=sl&z=15&output=embed" 
             width="100%" 
             height="100%" 
             style={{ border: 0 }} 

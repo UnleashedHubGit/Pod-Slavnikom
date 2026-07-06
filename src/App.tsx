@@ -5,10 +5,12 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Restaurant from './pages/Restaurant';
 import Rooms from './pages/Rooms';
+import RoomDetail from './pages/RoomDetail';
 import Spa from './pages/Spa';
 import Packages from './pages/Packages';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Surroundings from './pages/Surroundings';
 
 export default function App() {
   return (
@@ -22,9 +24,11 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/restavracija" element={<Restaurant />} />
               <Route path="/sobe" element={<Rooms />} />
+              <Route path="/sobe/:roomId" element={<RoomDetail />} />
               <Route path="/spa" element={<Spa />} />
               <Route path="/paketi" element={<Packages />} />
               <Route path="/o-nas" element={<About />} />
+              <Route path="/okolica" element={<Surroundings />} />
               <Route path="/kontakt" element={<Contact />} />
             </Routes>
           </AnimatePresence>
