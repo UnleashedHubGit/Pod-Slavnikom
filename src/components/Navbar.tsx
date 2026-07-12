@@ -49,7 +49,7 @@ export default function Navbar() {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`text-[9px] uppercase tracking-[0.5em] font-bold font-display transition-all duration-500 relative pb-2 ${
+                  className={`text-[9px] uppercase tracking-[0.5em] font-bold font-display transition-all duration-500 relative pb-2 whitespace-nowrap ${
                     isActive 
                       ? 'text-brand-gold' 
                       : useWhiteText 

@@ -50,7 +50,7 @@ export default function Spa() {
             <div className="grid grid-cols-2 gap-4 aspect-square max-w-xl mx-auto">
               <div className="row-span-2 rounded-[40px] overflow-hidden luxury-shadow group relative border border-brand-gold/10">
                 <img 
-                  src="https://images.unsplash.com/photo-1591343395082-e120087004b4?w=1200&q=80" 
+                  src="/images/client/wellness/wellness-sauna-01.jpg"
                   className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
                   alt="Finska savna" 
                   referrerPolicy="no-referrer"
@@ -59,7 +59,7 @@ export default function Spa() {
               </div>
               <div className="rounded-[40px] overflow-hidden luxury-shadow group relative border border-brand-gold/10">
                 <img 
-                  src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900&q=80" 
+                  src="/images/client/wellness/wellness-steam-cabin-01.jpg"
                   className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
                   alt="Parna kopel" 
                   referrerPolicy="no-referrer"
@@ -68,7 +68,7 @@ export default function Spa() {
               </div>
               <div className="rounded-[40px] overflow-hidden luxury-shadow group relative border border-brand-gold/10">
                 <img 
-                  src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=900&q=80" 
+                  src="/images/client/wellness/wellness-private-spa-01.jpg"
                   className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
                   alt="Jacuzzi" 
                   referrerPolicy="no-referrer"

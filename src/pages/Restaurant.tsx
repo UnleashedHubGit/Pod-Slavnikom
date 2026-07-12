@@ -67,7 +67,7 @@ export default function Restaurant() {
             </div>
             <div className="rounded-[60px] overflow-hidden aspect-[4/3] md:aspect-[16/11] luxury-shadow group relative border border-brand-gold/10">
               <img 
-                src="https://images.unsplash.com/photo-1546964124-0cce460f38ef?w=1400&q=80" 
+                src="/images/client/restaurant/restaurant-food-02.jpg"
                 className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
                 alt="Divjačinska jed" 
                 referrerPolicy="no-referrer"
@@ -110,7 +110,7 @@ export default function Restaurant() {
       <section className="relative py-40 px-6 bg-brand-bark-deep text-brand-cream overflow-hidden">
         <div className="absolute inset-0 opacity-20 mix-blend-overlay">
           <img 
-            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=2000&q=80" 
+            src="/images/client/restaurant/restaurant-interior-01.jpg"
             className="w-full h-full object-cover filter blur-[1px]" 
             alt="Medvedja večerja ambient" 
             referrerPolicy="no-referrer"

@@ -6,7 +6,7 @@ const packageList = [
   {
     name: 'Vikend Relax',
     badge: 'Vikend Relax',
-    image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=900&q=80',
+    image: '/images/client/wellness/wellness-private-spa-01.jpg',
     tagline: 'Telo se ustavi prej kot misli.',
     sub: 'Dva dni brez ur',
     price: '350€',
@@ -21,7 +21,7 @@ const packageList = [
   {
     name: 'Vikend & SPA',
     badge: 'Najbolj iskan',
-    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900&q=80',
+    image: '/images/client/wellness/wellness-sauna-01.jpg',
     tagline: 'Vikend, ki diši po gozdu in pari.',
     sub: 'Smreka in para',
     price: '280€',
@@ -36,7 +36,7 @@ const packageList = [
   {
     name: 'Divja eleganca',
     badge: 'Bear & Stay',
-    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80',
+    image: '/images/client/restaurant/restaurant-food-03.jpg',
     tagline: 'Ena noč in divjačina, kakršne drugje ne najdeš.',
     sub: 'Bear & Stay',
     price: '200€',
@@ -50,7 +50,7 @@ const packageList = [
   {
     name: 'Medvedja večerja',
     badge: '🐻 Enkrat na leto',
-    image: 'https://images.unsplash.com/photo-1546964124-0cce460f38ef?w=900&q=80',
+    image: '/images/client/restaurant/restaurant-interior-01.jpg',
     tagline: 'Edinstven kulinarični ritual v kamniti kleti.',
     sub: 'La Cena dell\'Orso',
     price: 'Na povpraševanje',
@@ -163,8 +163,8 @@ export default function Packages() {
                 </div>
 
                 {/* Card Footer */}
-                <div className="pt-6 border-t border-brand-gold/10 flex items-center justify-between gap-4">
-                  <div>
+                <div className="pt-6 border-t border-brand-gold/10 flex flex-wrap items-center justify-between gap-4">
+                  <div className="min-w-0">
                     <span className="text-[8px] uppercase tracking-widest text-brand-stone font-bold font-display block">
                       {pkg.priceLabel}
                     </span>
@@ -172,9 +172,9 @@ export default function Packages() {
                       {pkg.price}
                     </span>
                   </div>
-                  <Link 
-                    to="/kontakt" 
-                    className="px-5 py-3 bg-brand-wood text-white rounded-full font-bold uppercase tracking-widest text-[9px] hover:bg-brand-gold hover:text-brand-wood transition-colors font-display shadow-sm"
+                  <Link
+                    to="/kontakt"
+                    className="shrink-0 px-5 py-3 bg-brand-wood text-white rounded-full font-bold uppercase tracking-widest text-[9px] hover:bg-brand-gold hover:text-brand-wood transition-colors font-display shadow-sm"
                   >
                     Rezerviraj
                   </Link>
