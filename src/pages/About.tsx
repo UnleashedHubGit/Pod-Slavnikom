@@ -118,10 +118,10 @@ export default function About() {
 
       {/* Atmospheric Full Screen Photo */}
       <section className="h-[60vh] relative overflow-hidden">
-         <img 
-           src="https://return.imindevelopment.com/wp-content/uploads/2026/04/712602758.jpg" 
-           className="w-full h-full object-cover transition-transform duration-[10s] hover:scale-105" 
-           alt="Pod Slavnikom Okolica" 
+         <img
+           src="/images/client/additional/main-exterior-03.jpg"
+           className="w-full h-full object-cover transition-transform duration-[10s] hover:scale-105"
+           alt="Pod Slavnikom Okolica"
            referrerPolicy="no-referrer"
          />
          <div className="absolute inset-0 bg-brand-wood-deep/30"></div>

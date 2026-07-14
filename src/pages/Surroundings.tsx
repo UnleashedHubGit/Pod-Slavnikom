@@ -195,10 +195,10 @@ export default function Surroundings() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-brand-wood-deep/80 rounded-[60px] border border-brand-gold/15 overflow-hidden">
             <div className="lg:col-span-6 aspect-[4/3] md:aspect-square relative bg-brand-bark min-h-[400px]">
-              <img 
-                src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=1400&q=80" 
-                className="w-full h-full object-cover transition-transform duration-[8s] hover:scale-105" 
-                alt="Slavnik gora" 
+              <img
+                src="/images/client/surroundings/slavnik-summit-viewpoint.webp"
+                className="w-full h-full object-cover object-center transition-transform duration-[8s] hover:scale-105"
+                alt="Obiskovalci na vrhu Slavnika ob razgledni orientacijski plošči"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-wood-deep/60 via-transparent to-transparent"></div>

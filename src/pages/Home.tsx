@@ -24,10 +24,10 @@ export default function Home() {
       {/* Heritage Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-[#2a1d15]">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://return.imindevelopment.com/wp-content/uploads/2026/04/715205411.jpg" 
+          <img
+            src="/images/client/additional/main-exterior-01.jpg"
             className="w-full h-full object-cover opacity-40 transition-transform duration-[12000ms] hover:scale-105"
-            alt="Interior Gostilne"
+            alt="Gostilna Pod Slavnikom – zunanjost"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#2a1d15]/70 via-transparent to-[#2a1d15]/80"></div>
@@ -104,7 +104,7 @@ export default function Home() {
            <div className="lg:w-1/2 relative group">
               <div className="absolute -inset-4 border border-brand-gold/10 rounded-[64px] -z-10 group-hover:inset-0 transition-all duration-1000"></div>
               <div className="overflow-hidden rounded-[80px] luxury-shadow">
-                <img src="https://return.imindevelopment.com/wp-content/uploads/2026/04/715205305.jpg" className="w-full aspect-[4/5] object-cover transition-transform duration-[3s] group-hover:scale-105" alt="Gostilna Pod Slavnikom" referrerPolicy="no-referrer" />
+                <img src="/images/client/additional/restaurant-01.jpg" className="w-full aspect-[4/5] object-cover transition-transform duration-[3s] group-hover:scale-105" alt="Restavracija Pod Slavnikom" referrerPolicy="no-referrer" />
               </div>
               <div className="absolute -bottom-10 -left-10 w-32 h-32 gold-badge rotate-[15deg] z-10 border-4 border-brand-cream shadow-2xl">
                  <span className="text-[10px] uppercase font-bold tracking-widest text-brand-wood leading-tight text-center">Pristni<br/>Okusi</span>
@@ -141,7 +141,7 @@ export default function Home() {
            <div className="lg:w-1/2 relative group">
               <div className="absolute -inset-4 border border-brand-gold/20 rounded-[100px] -z-10 group-hover:inset-0 transition-all duration-1000"></div>
               <div className="overflow-hidden rounded-[100px] luxury-shadow">
-                <img src="https://return.imindevelopment.com/wp-content/uploads/2026/04/712604439.jpg" className="w-full aspect-[4/5] object-cover transition-transform duration-[3s] group-hover:scale-105" alt="Udobna soba" referrerPolicy="no-referrer" />
+                <img src="/images/client/additional/main-exterior-03.jpg" className="w-full aspect-[4/5] object-cover object-center transition-transform duration-[3s] group-hover:scale-105" alt="Gostišče s prenočišči Pod Slavnikom" referrerPolicy="no-referrer" />
               </div>
               <div className="absolute -top-12 -right-12 w-44 h-44 bg-brand-gold/90 backdrop-blur-md rounded-full flex items-center justify-center -rotate-12 border-4 border-brand-wood shadow-2xl p-8 animate-pulse-slow">
                  <p className="text-[10px] uppercase font-black tracking-widest text-brand-wood leading-tight text-center font-display">Spanje v objemu narave</p>
@@ -180,11 +180,11 @@ export default function Home() {
            <div className="lg:w-1/2 relative group">
               <div className="absolute -inset-4 border border-brand-gold/10 rounded-[80px] -z-10 group-hover:inset-0 transition-all duration-1000"></div>
               <div className="overflow-hidden rounded-[80px] luxury-shadow">
-                <img src="https://return.imindevelopment.com/wp-content/uploads/2026/04/hf_20260419_193107_b6e54a8e-bdce-4ced-9bec-83bdbf5aa085-scaled.png" className="w-full aspect-[16/10] lg:aspect-square object-cover transition-transform duration-[3s] group-hover:scale-105" alt="Privatni SPA" referrerPolicy="no-referrer" />
+                <img src="/images/client/wellness/wellness-private-spa-01.jpg" className="w-full aspect-[16/10] lg:aspect-square object-cover object-center transition-transform duration-[3s] group-hover:scale-105" alt="Privatni SPA & wellness Pod Slavnikom" referrerPolicy="no-referrer" />
               </div>
-              <div className="absolute top-10 right-10 flex gap-2">
-                 <div className="w-3 h-3 rounded-full bg-brand-gold animate-ping"></div>
-                 <span className="text-[9px] uppercase tracking-widest font-bold text-brand-wood">Popolna zasebnost</span>
+              <div className="absolute top-10 right-10 flex items-center gap-2 bg-brand-wood/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+                 <div className="w-2.5 h-2.5 rounded-full bg-brand-gold animate-ping"></div>
+                 <span className="text-[9px] uppercase tracking-widest font-bold text-brand-cream">Popolna zasebnost</span>
               </div>
            </div>
            
@@ -261,7 +261,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24 items-center relative z-10">
            <div className="lg:w-1/2 relative group">
               <div className="overflow-hidden rounded-[100px] luxury-shadow border border-white/5">
-                <img src="https://return.imindevelopment.com/wp-content/uploads/2026/04/332890_MOK_foto_Jaka_Ivancic-scaled-1.webp" className="w-full aspect-[4/5] object-cover transition-transform duration-[5s] group-hover:scale-105" alt="Vas Podgorje" referrerPolicy="no-referrer" />
+                <img src="/images/client/additional/main-exterior-04.jpg" className="w-full aspect-[4/5] object-cover transition-transform duration-[5s] group-hover:scale-105" alt="Pod Slavnikom pod pobočjem Slavnika" referrerPolicy="no-referrer" />
               </div>
               <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-brand-gold rounded-full flex items-center justify-center p-8 text-brand-wood text-center text-[10px] uppercase font-black tracking-widest luxury-shadow border-4 border-brand-wood -rotate-6">
                 Skriti dragulj slovenske Istre
@@ -285,8 +285,8 @@ export default function Home() {
       {/* Host Bio - Igor */}
       <section className="py-48 px-6 bg-brand-cream relative overflow-hidden">
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
-           <div className="w-40 h-40 rounded-full overflow-hidden mb-16 luxury-shadow border-4 border-white group">
-              <img src="https://return.imindevelopment.com/wp-content/uploads/2026/04/712603346.jpg" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" alt="Igor - vaš gostitelj" referrerPolicy="no-referrer" />
+           <div className="w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden mb-16 luxury-shadow border-4 border-white group">
+              <img src="/images/client/people/igor-cendak-portrait.webp" className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-1000" alt="Igor Čendak" referrerPolicy="no-referrer" />
            </div>
            <span className="text-brand-gold text-[10px] uppercase tracking-[0.6em] font-bold block mb-8 font-display">Vaš gostitelj</span>
            <h3 className="text-5xl md:text-7xl font-serif mb-12 italic tracking-tighter">"Iskrena skrb za <br/> vsakega gosta."</h3>

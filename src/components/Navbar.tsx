@@ -13,6 +13,19 @@ const navLinks = [
   { name: 'Kontakt', path: '/kontakt' },
 ];
 
+// Desktop-only left/right grouping (mobile menu keeps navLinks' original order above)
+const desktopLeftLinks = [
+  { name: 'O nas', path: '/o-nas' },
+  { name: 'Gostilna', path: '/restavracija' },
+  { name: 'Sobe', path: '/sobe' },
+  { name: 'Wellness', path: '/spa' },
+];
+const desktopRightLinks = [
+  { name: 'Paketi', path: '/paketi' },
+  { name: 'Okolica', path: '/okolica' },
+  { name: 'Kontakt', path: '/kontakt' },
+];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -40,20 +53,20 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-[1500px] mx-auto px-8 md:px-12 pointer-events-auto">
-        <div className="flex items-center justify-between">
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center">
           {/* Left Nav */}
-          <div className="hidden lg:flex items-center space-x-12 flex-1">
-            {navLinks.slice(0, 3).map((link) => {
+          <div className="hidden lg:flex items-center space-x-6 col-start-1 min-w-0">
+            {desktopLeftLinks.map((link) => {
               const isActive = location.pathname === link.path;
               return (
                 <Link
                   key={link.path}
                   to={link.path}
                   className={`text-[9px] uppercase tracking-[0.5em] font-bold font-display transition-all duration-500 relative pb-2 whitespace-nowrap ${
-                    isActive 
-                      ? 'text-brand-gold' 
-                      : useWhiteText 
-                        ? 'text-white/70 hover:text-white' 
+                    isActive
+                      ? 'text-brand-gold'
+                      : useWhiteText
+                        ? 'text-white/70 hover:text-white'
                         : 'text-brand-wood/50 hover:text-brand-wood'
                   }`}
                 >
@@ -70,66 +83,68 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Logo Center */}
-          <Link to="/" className="flex flex-col items-center group px-12 scale-90 md:scale-100">
-            <div className="h-16 md:h-20 transition-all duration-700 group-hover:scale-105">
-              <img 
-                src={useWhiteText ? "https://return.imindevelopment.com/wp-content/uploads/2026/04/Pod-Slavnikom-logo-white-scaled.png" : "https://return.imindevelopment.com/wp-content/uploads/2026/04/Pod-Slavnikom-logo-black-scaled.png"} 
-                alt="Pod Slavnikom" 
-                className="h-full w-auto object-contain"
-                referrerPolicy="no-referrer"
-              />
-            </div>
+          {/* Logo - optically and mathematically centered; reserved middle column keeps it independent of side group widths */}
+          <Link
+            to="/"
+            className="col-start-2 justify-self-center px-4 group"
+          >
+            <img
+              src={useWhiteText ? "/images/client/brand/pod-slavnikom-logo-on-dark.svg" : "/images/client/brand/pod-slavnikom-logo-on-light.svg"}
+              alt="Pod Slavnikom"
+              className="w-[168px] md:w-[188px] xl:w-[208px] h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+            />
           </Link>
 
-          {/* Right Nav */}
-          <div className="hidden lg:flex items-center justify-end space-x-12 flex-1">
-            {navLinks.slice(3, 7).map((link) => {
-              const isActive = location.pathname === link.path;
-              return (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`text-[9px] uppercase tracking-[0.5em] font-bold font-display transition-all duration-500 relative pb-2 ${
-                    isActive 
-                      ? 'text-brand-gold' 
-                      : useWhiteText 
-                        ? 'text-white/70 hover:text-white' 
-                        : 'text-brand-wood/50 hover:text-brand-wood'
-                  }`}
-                >
-                  {link.name}
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-brand-gold"
-                      transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-                    />
-                  )}
-                </Link>
-              );
-            })}
-            <Link 
-              to="/kontakt" 
-              className={`px-8 py-3 rounded-full text-[9px] uppercase tracking-[0.4em] font-bold font-display transition-all duration-700 ${
-                scrolled 
-                  ? 'bg-brand-wood text-white hover:bg-brand-gold' 
-                  : 'bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand-wood'
-              }`}
-            >
-              Rezervacija
-            </Link>
-          </div>
+          {/* Right Nav + Mobile Toggle */}
+          <div className="flex items-center justify-end col-start-3 min-w-0">
+            <div className="hidden lg:flex items-center space-x-6 min-w-0">
+              {desktopRightLinks.map((link) => {
+                const isActive = location.pathname === link.path;
+                return (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={`text-[9px] uppercase tracking-[0.5em] font-bold font-display transition-all duration-500 relative pb-2 whitespace-nowrap ${
+                      isActive
+                        ? 'text-brand-gold'
+                        : useWhiteText
+                          ? 'text-white/70 hover:text-white'
+                          : 'text-brand-wood/50 hover:text-brand-wood'
+                    }`}
+                  >
+                    {link.name}
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeIndicator"
+                        className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-brand-gold"
+                        transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                      />
+                    )}
+                  </Link>
+                );
+              })}
+              <Link
+                to="/kontakt"
+                className={`px-6 py-3 -translate-y-[4px] rounded-full text-[9px] uppercase tracking-[0.4em] font-bold font-display transition-all duration-700 whitespace-nowrap ${
+                  useWhiteText
+                    ? 'bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand-wood'
+                    : 'bg-brand-wood-deep text-brand-cream hover:bg-brand-gold hover:text-brand-wood-deep'
+                }`}
+              >
+                Rezervacija
+              </Link>
+            </div>
 
-          {/* Mobile Toggle */}
-          <button 
-            className={`lg:hidden p-2 transition-colors duration-500 ${
-              useWhiteText ? 'text-white' : 'text-brand-wood'
-            }`}
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+            {/* Mobile Toggle */}
+            <button
+              className={`lg:hidden p-2 transition-colors duration-500 ${
+                useWhiteText ? 'text-white' : 'text-brand-wood'
+              }`}
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
       </div>
 
