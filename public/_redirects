@@ -1,0 +1,3 @@
+# SPA fallback: serve the React app for every path so client-side routes
+# (e.g. /sobe, /restavracija, room-detail pages) work on direct load & refresh.
+/*    /index.html   200

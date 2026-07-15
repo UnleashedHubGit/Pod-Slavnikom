@@ -1,5 +1,6 @@
+import { useSeo } from '../lib/seo';
 import { motion } from 'motion/react';
-import { Info, Sparkles, Check } from 'lucide-react';
+import { Sparkles, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const packageList = [
@@ -35,10 +36,10 @@ const packageList = [
   },
   {
     name: 'Divja eleganca',
-    badge: 'Bear & Stay',
+    badge: 'Divja eleganca',
     image: '/images/client/restaurant/restaurant-food-03.jpg',
     tagline: 'Ena noč in divjačina, kakršne drugje ne najdeš.',
-    sub: 'Bear & Stay',
+    sub: 'Divja eleganca',
     price: '200€',
     priceLabel: '1 noč · za 2',
     features: [
@@ -80,6 +81,10 @@ const cardVariants = {
 };
 
 export default function Packages() {
+  useSeo(
+    'Paketi & doživetja | Pod Slavnikom',
+    'Doživljajski paketi z nastanitvijo, wellnessom in kulinariko — Vikend Relax, Vikend & SPA, Divja eleganca in Medvedja večerja.',
+  );
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -97,7 +102,7 @@ export default function Packages() {
           <span className="italic text-brand-gold font-serif">najlepše.</span>
         </h1>
         <div className="w-16 h-[1px] bg-brand-gold mx-auto"></div>
-        <p className="text-brand-stone text-xl leading-relaxed font-serif italic font-light max-w-2xl mx-auto">
+        <p className="text-brand-stone text-xl leading-relaxed font-serif font-light max-w-2xl mx-auto">
           Sobo, savno, večerjo, gozd. Tri kombinacije, ki imajo smisel. Vsaka prilagojena za drugačno priložnost.
         </p>
       </section>
@@ -121,7 +126,7 @@ export default function Packages() {
                   : 'border-brand-gold/10 hover:border-brand-gold/40'
               }`}
             >
-              {pkg.featured && (
+              {pkg.featured && pkg.badge !== pkg.name && (
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-wood text-[8px] uppercase tracking-[0.25em] font-bold py-1.5 px-4 rounded-full z-20 shadow-md flex items-center gap-1">
                   <Sparkles className="w-2.5 h-2.5" /> {pkg.badge}
                 </div>
@@ -133,10 +138,10 @@ export default function Packages() {
                   src={pkg.image} 
                   className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
                   alt={pkg.name} 
-                  referrerPolicy="no-referrer"
+                  referrerPolicy="no-referrer" loading="lazy" decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-                {!pkg.featured && (
+                {!pkg.featured && pkg.badge !== pkg.name && (
                   <span className="absolute top-6 left-6 text-[9px] uppercase tracking-[0.2em] font-bold py-2 px-5 rounded-full shadow-lg bg-brand-wood text-brand-gold">
                     {pkg.badge}
                   </span>
@@ -146,9 +151,11 @@ export default function Packages() {
               {/* Card Body */}
               <div className="p-8 flex-grow flex flex-col justify-between space-y-8">
                 <div className="space-y-4 flex-grow">
-                  <span className="text-[10px] uppercase tracking-widest font-bold text-brand-gold italic block font-serif">
-                    {pkg.sub}
-                  </span>
+                  {pkg.sub !== pkg.name && (
+                    <span className="text-[10px] uppercase tracking-widest font-bold text-brand-gold italic block font-serif">
+                      {pkg.sub}
+                    </span>
+                  )}
                   <h3 className="font-serif text-2xl text-brand-wood font-bold">{pkg.name}</h3>
                   <p className="text-brand-gold-dim text-sm italic font-serif leading-relaxed">{pkg.tagline}</p>
                   
@@ -183,14 +190,6 @@ export default function Packages() {
             </motion.div>
           ))}
         </motion.div>
-
-        {/* Small Notes in Slate Gray */}
-        <div className="mt-20 flex items-center gap-4 justify-center text-xs text-brand-stone italic bg-brand-cream-soft p-6 rounded-3xl max-w-3xl mx-auto border border-brand-gold/15 luxury-shadow">
-          <Info className="w-5 h-5 text-brand-gold shrink-0" />
-          <p className="leading-relaxed">
-            Igor: dopolni točno vsebino vsakega paketa (število wellness terminov, kateri meni, doplačila). Cene 350 / 280 / 200 € so postavljene po dogovoru.
-          </p>
-        </div>
       </section>
     </motion.div>
   );

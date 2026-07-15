@@ -6,24 +6,22 @@ export default function Footer() {
     <footer className="bg-brand-wood-deep text-brand-cream py-24 px-6 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-gold/20 to-transparent"></div>
       
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-8">
-        <div className="space-y-8">
-          <div className="space-y-4">
-            <Link to="/" className="block w-[165px] md:w-[180px] mb-4">
-              <img
-                src="/images/client/brand/pod-slavnikom-logo-on-dark.svg"
-                alt="Pod Slavnikom"
-                className="w-full h-auto object-contain"
-              />
-            </Link>
-            <div className="w-12 h-[1px] bg-brand-gold"></div>
-          </div>
-          <p className="text-brand-cream/60 text-sm leading-relaxed max-w-xs font-light font-sans">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 lg:gap-10">
+        <div className="space-y-8 lg:col-span-2">
+          <Link to="/" aria-label="Pod Slavnikom – domača stran" className="block w-[180px] md:w-[210px] mb-2">
+            <img
+              src="/images/client/brand/pod-slavnikom-logo-on-dark.svg"
+              alt=""
+              className="w-full h-auto object-contain"
+            />
+          </Link>
+          <p className="text-brand-cream/70 text-sm leading-relaxed max-w-sm font-light font-sans">
             Divjačina, ki ve, od kod prihaja. Wellness, ki je samo vaš. Soba, ki je ne boš zapustil hitro.
           </p>
+          {/* Social profiles pending — non-interactive placeholders until the owner supplies URLs */}
           <div className="flex space-x-6">
-            <a href="#" className="w-10 h-10 rounded-full border border-brand-cream/10 flex items-center justify-center hover:bg-brand-gold hover:border-brand-gold transition-all duration-500"><Instagram className="w-4 h-4" /></a>
-            <a href="#" className="w-10 h-10 rounded-full border border-brand-cream/10 flex items-center justify-center hover:bg-brand-gold hover:border-brand-gold transition-all duration-500"><Facebook className="w-4 h-4" /></a>
+            <span role="img" aria-label="Instagram – povezava bo dodana" title="Povezava bo dodana" className="w-10 h-10 rounded-full border border-brand-cream/10 flex items-center justify-center text-brand-cream/40"><Instagram className="w-4 h-4" aria-hidden="true" /></span>
+            <span role="img" aria-label="Facebook – povezava bo dodana" title="Povezava bo dodana" className="w-10 h-10 rounded-full border border-brand-cream/10 flex items-center justify-center text-brand-cream/40"><Facebook className="w-4 h-4" aria-hidden="true" /></span>
           </div>
         </div>
 
@@ -58,33 +56,70 @@ export default function Footer() {
 
         <div>
           <h4 className="font-display text-[10px] uppercase tracking-[0.4em] font-bold text-brand-gold mb-8">Urnik</h4>
-          <ul className="space-y-4 text-sm text-brand-cream/60 font-light font-sans">
-            <li className="flex justify-between border-b border-brand-cream/5 pb-2">
-              <span>Sreda – Nedelja</span>
+          <ul className="space-y-4 text-sm text-brand-cream/70 font-light font-sans">
+            <li className="flex justify-between border-b border-brand-cream/10 pb-2">
+              <span className="text-brand-cream/80">Sreda – Nedelja</span>
               <span className="text-brand-cream font-medium">12:00 – 22:00</span>
             </li>
-            <li className="flex justify-between text-brand-gold/40">
-              <span>Ponedeljek, Torek</span>
-              <span>ZAPRTO</span>
+            <li className="flex justify-between items-center">
+              <span className="text-brand-cream/60">Ponedeljek, Torek</span>
+              <span className="text-brand-gold/90 font-semibold tracking-wide text-xs">ZAPRTO</span>
             </li>
           </ul>
-          <div className="mt-8 p-4 rounded-2xl bg-white/5 border border-white/5 font-sans">
-            <p className="text-[9px] uppercase tracking-[0.2em] leading-relaxed text-brand-cream/40">
+          <div className="mt-8 p-4 rounded-2xl bg-white/5 border border-white/10 font-sans">
+            <p className="text-xs leading-relaxed text-brand-cream/70">
               Nastanitve in SPA so na voljo 7 dni v tednu po predhodnem dogovoru.
             </p>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto pt-16 mt-20 border-t border-brand-cream/5 flex flex-col md:flex-row justify-between items-center gap-8 font-sans">
-        <p className="text-[10px] uppercase tracking-widest text-brand-cream/30 font-display">
-          © 2026 Gostišče Pod Slavnikom · Vse pravice pridržane
+      <div className="max-w-7xl mx-auto pt-16 mt-20 border-t border-brand-cream/10 grid grid-cols-1 md:grid-cols-3 items-center gap-6 md:gap-8 text-center font-sans">
+        {/* Left: copyright */}
+        <p className="text-[10px] uppercase tracking-widest text-brand-cream/60 font-display md:text-left">
+          © 2026 Gostišče Pod Slavnikom. Vse pravice pridržane.
         </p>
-        <div className="flex gap-10 text-[9px] uppercase tracking-[0.3em] text-brand-cream/30 font-display">
-          <span>SI</span>
-          <span className="opacity-40">EN</span>
-          <span className="opacity-40">IT</span>
+
+        {/* Center: language selector (SL active; EN/IT in preparation) */}
+        <div
+          className="flex justify-center gap-6 text-[10px] uppercase tracking-[0.3em] font-display"
+          role="group"
+          aria-label="Izbira jezika"
+        >
+          <span aria-current="true" className="text-brand-gold font-bold">SL</span>
+          <button
+            type="button"
+            disabled
+            aria-disabled="true"
+            title="Angleška različica je v pripravi"
+            className="text-brand-cream/70 cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:text-brand-gold"
+          >
+            EN
+          </button>
+          <button
+            type="button"
+            disabled
+            aria-disabled="true"
+            title="Italijanska različica je v pripravi"
+            className="text-brand-cream/70 cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:text-brand-gold"
+          >
+            IT
+          </button>
         </div>
+
+        {/* Right: studio credit */}
+        <p className="text-[10px] uppercase tracking-widest text-brand-cream/60 font-display md:text-right">
+          Oblikovanje, razvoj in avtomatizacija:{' '}
+          <a
+            href="https://aithena.co/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Aithena (povezava se odpre v novem zavihku)"
+            className="text-brand-cream/85 underline decoration-brand-gold/30 underline-offset-2 hover:text-brand-gold focus-visible:text-brand-gold focus-visible:outline-none transition-colors"
+          >
+            Aithena
+          </a>
+        </p>
       </div>
     </footer>
   );

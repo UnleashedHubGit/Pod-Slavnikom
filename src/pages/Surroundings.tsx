@@ -1,3 +1,4 @@
+import { useSeo } from '../lib/seo';
 import { motion } from 'motion/react';
 import { Map, MapPin, Compass, Landmark, Library, Bike, Route } from 'lucide-react';
 
@@ -88,7 +89,7 @@ const landmarks = [
     icon: '📍',
     dist: 'GPS: Podgorje 1',
     title: 'Kako do nas',
-    desc: 'Z avtoceste Ljubljana–Koper izstopi na Kastelcu or Kozini. Sledi znakom za Podgorje. Parkirišče ob gostišču.'
+    desc: 'Z avtoceste Ljubljana–Koper izstopi na Kastelcu ali Kozini. Sledi znakom za Podgorje. Parkirišče ob gostišču.'
   }
 ];
 
@@ -167,6 +168,10 @@ const cardVariants = {
 };
 
 export default function Surroundings() {
+  useSeo(
+    'Okolica & doživetja | Pod Slavnikom',
+    'Slavnik, slovenska Istra, Kras in Trst na dosegu roke. Pohodništvo, narava in znamenitosti v okolici Podgorja.',
+  );
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -184,14 +189,14 @@ export default function Surroundings() {
           <span className="italic text-brand-gold font-serif">vse, kar je najboljšega.</span>
         </h1>
         <div className="w-16 h-[1px] bg-brand-gold"></div>
-        <p className="text-brand-stone text-xl leading-relaxed font-serif italic font-light max-w-2xl">
+        <p className="text-brand-stone text-xl leading-relaxed font-serif font-light max-w-2xl">
           Podgorje leži na točki, kjer se trije svetovi dotikajo: Kraška planota, Istra in obala. Tu so poti, ki vodijo do neba, in poti, ki vodijo do morja — vse se začnejo pri naših vratih.
         </p>
       </section>
 
       {/* Slavnik Featured Section */}
       <section className="py-12 bg-brand-wood text-brand-cream relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none grain-texture"></div>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-brand-wood-deep/80 rounded-[60px] border border-brand-gold/15 overflow-hidden">
             <div className="lg:col-span-6 aspect-[4/3] md:aspect-square relative bg-brand-bark min-h-[400px]">
@@ -199,11 +204,11 @@ export default function Surroundings() {
                 src="/images/client/surroundings/slavnik-summit-viewpoint.webp"
                 className="w-full h-full object-cover object-center transition-transform duration-[8s] hover:scale-105"
                 alt="Obiskovalci na vrhu Slavnika ob razgledni orientacijski plošči"
-                referrerPolicy="no-referrer"
+                referrerPolicy="no-referrer" loading="lazy" decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-wood-deep/60 via-transparent to-transparent"></div>
               <div className="absolute top-8 left-8 text-white space-y-2">
-                <span className="font-serif text-5xl md:text-7xl font-black leading-none drop-shadow-lg block">1028 m</span>
+                <span className="font-serif text-5xl md:text-6xl font-black leading-none drop-shadow-lg block">1028 m</span>
                 <span className="text-brand-gold text-[10px] uppercase tracking-widest font-black block font-display">Primorski Triglav</span>
               </div>
             </div>
@@ -218,7 +223,7 @@ export default function Surroundings() {
               <p className="text-brand-cream/80 text-sm leading-relaxed">
                 Tisoč osemindvajset metrov. Domačini mu pravijo primorski Triglav. Pot se začne pri naši hiši — lahka (1h 40min) ali strma (1h).
               </p>
-              <p className="text-brand-cream/70 text-sm leading-relaxed italic font-serif">
+              <p className="text-brand-cream/70 text-sm leading-relaxed font-serif">
                 Z vrha: morje na eni strani, Alpe na drugi, ob jasnem dnevu do Benetk. Spomladi planota cveti z žafrani in narcisami. Na vrhu Tumova koča — odprta ob vikendih.
               </p>
               
@@ -275,12 +280,12 @@ export default function Surroundings() {
 
       {/* Cultural Attractions */}
       <section className="py-24 px-6 bg-brand-cream-soft border-t border-brand-gold/10 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none grain-texture"></div>
         <div className="max-w-7xl mx-auto space-y-16 relative z-10">
           <div className="text-center space-y-4">
             <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-bold block font-display">Okolica · Kultura & mesta</span>
             <h2 className="text-3xl md:text-5xl font-serif text-brand-wood">V pol ure od vsakega svetá.</h2>
-            <p className="text-brand-stone text-base max-w-xl mx-auto italic font-serif">Beneška obala, habsburški Trst, kraške jame, srednjeveške freske, lipicanci. Vse v krogu, ki ga prevoziš for polovico delovnega dne.</p>
+            <p className="text-brand-stone text-base max-w-xl mx-auto font-serif">Beneška obala, habsburški Trst, kraške jame, srednjeveške freske, lipicanci. Vse v krogu, ki ga prevoziš za polovico delovnega dne.</p>
           </div>
 
           <motion.div 
@@ -334,7 +339,7 @@ export default function Surroundings() {
 
       {/* Interactive Corridor and Long Distance Trails */}
       <section className="py-24 px-6 bg-brand-wood-deep text-brand-cream relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none grain-texture"></div>
         <div className="max-w-7xl mx-auto relative z-10 space-y-20">
           <div className="max-w-4xl space-y-6">
             <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-bold block font-display">Potencial območja</span>
@@ -342,7 +347,7 @@ export default function Surroundings() {
             <p className="text-brand-cream/80 text-base leading-relaxed">
               Med Tržaškim in Kvarnerskim zalivom je najkrajša kopenska povezava prav tod — čez Podgorje. Tu se srečata Zahod in Vzhod, Brkini in Istra, Kras in morje.
             </p>
-            <p className="text-brand-cream/60 text-sm leading-relaxed italic font-serif">
+            <p className="text-brand-cream/60 text-sm leading-relaxed font-serif">
               To ni obrobje. To je prag. Stoletja so tu prehajali pastirji, tihotapci in romarji; danes isto pot izberejo kolesarji, daljinski pohodniki in svetovni popotniki. Greben nad našo hišo — Slavnik, Golič, Žbevnica — je rob, kjer se slovenska Istra preveša v hrvaško in kjer se začenjajo Dinaridi. Kdor prečka to mejo peš ali s kolesom, jo pogosto prečka prav tu.
             </p>
           </div>

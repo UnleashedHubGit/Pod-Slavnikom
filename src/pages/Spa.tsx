@@ -1,3 +1,4 @@
+import { useSeo } from '../lib/seo';
 import { motion } from 'motion/react';
 import { Sparkles, Heart } from 'lucide-react';
 
@@ -17,6 +18,10 @@ const cardVariants = {
 };
 
 export default function Spa() {
+  useSeo(
+    'Zasebni wellness & SPA | Pod Slavnikom',
+    'Zasebni wellness s savno, parno kopeljo in jacuzzijem — rezerviran samo za vas. Sprostitev ob vznožju Slavnika v Podgorju.',
+  );
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -37,7 +42,7 @@ export default function Spa() {
               <span className="italic text-brand-gold font-serif">Samo vaše.</span>
             </h1>
             <div className="w-16 h-[1px] bg-brand-gold"></div>
-            <p className="text-brand-stone text-lg leading-relaxed font-serif max-w-md italic font-light">
+            <p className="text-brand-stone text-lg leading-relaxed font-serif max-w-md font-light">
               Naš wellness ni javni bazen s tujci. Je zasebni prostor, rezerviran izključno za vas — vašo skupino, vaš par, vašo družino. Ko vstopite, se vrata zaprejo za vami.
             </p>
             <div className="p-6 bg-brand-cream border-l-2 border-brand-gold text-brand-gold-dim font-serif italic rounded-r-3xl luxury-shadow">
@@ -53,7 +58,7 @@ export default function Spa() {
                   src="/images/client/wellness/wellness-sauna-01.jpg"
                   className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
                   alt="Finska savna" 
-                  referrerPolicy="no-referrer"
+                  referrerPolicy="no-referrer" loading="lazy" decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
               </div>
@@ -62,7 +67,7 @@ export default function Spa() {
                   src="/images/client/wellness/wellness-steam-cabin-01.jpg"
                   className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
                   alt="Parna kopel" 
-                  referrerPolicy="no-referrer"
+                  referrerPolicy="no-referrer" loading="lazy" decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
               </div>
@@ -71,7 +76,7 @@ export default function Spa() {
                   src="/images/client/wellness/wellness-private-spa-01.jpg"
                   className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
                   alt="Jacuzzi" 
-                  referrerPolicy="no-referrer"
+                  referrerPolicy="no-referrer" loading="lazy" decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
               </div>
@@ -82,7 +87,7 @@ export default function Spa() {
 
       {/* Features Grid */}
       <section className="bg-brand-wood text-brand-cream py-24 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none grain-texture"></div>
         <div className="max-w-7xl mx-auto relative z-10 space-y-16">
           <div className="text-center">
             <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-bold block mb-4 font-display">Udobje in oprema</span>
@@ -154,7 +159,7 @@ export default function Spa() {
 
       {/* Booking CTA and Cancellation Policy */}
       <section className="py-20 px-6 bg-brand-cream-soft text-center border-t border-brand-gold/10 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none grain-texture"></div>
         <div className="max-w-2xl mx-auto space-y-8 relative z-10">
           <div className="p-8 md:p-12 border border-dashed border-brand-gold bg-white rounded-[40px] luxury-shadow">
             <h3 className="font-serif text-2xl text-brand-wood mb-2">Rezervacija termina online</h3>

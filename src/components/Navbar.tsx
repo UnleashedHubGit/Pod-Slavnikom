@@ -47,8 +47,8 @@ export default function Navbar() {
   const useWhiteText = isHomePage && !scrolled;
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-1000 pointer-events-none ${
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out pointer-events-none ${
         scrolled ? 'bg-brand-cream/80 backdrop-blur-xl py-3 shadow-[0_1px_3px_0_rgba(45,27,16,0.02)]' : 'bg-transparent py-8'
       }`}
     >
@@ -62,7 +62,7 @@ export default function Navbar() {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`text-[9px] uppercase tracking-[0.5em] font-bold font-display transition-all duration-500 relative pb-2 whitespace-nowrap ${
+                  className={`text-[9px] uppercase tracking-[0.5em] font-bold font-display transition-all duration-300 relative pb-2 whitespace-nowrap ${
                     isActive
                       ? 'text-brand-gold'
                       : useWhiteText
@@ -86,12 +86,13 @@ export default function Navbar() {
           {/* Logo - optically and mathematically centered; reserved middle column keeps it independent of side group widths */}
           <Link
             to="/"
+            aria-label="Pod Slavnikom – domača stran"
             className="col-start-2 justify-self-center px-4 group"
           >
             <img
               src={useWhiteText ? "/images/client/brand/pod-slavnikom-logo-on-dark.svg" : "/images/client/brand/pod-slavnikom-logo-on-light.svg"}
-              alt="Pod Slavnikom"
-              className="w-[168px] md:w-[188px] xl:w-[208px] h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+              alt=""
+              className="w-[168px] md:w-[188px] xl:w-[208px] h-auto object-contain transition-transform duration-500 group-hover:scale-105"
             />
           </Link>
 
@@ -104,7 +105,7 @@ export default function Navbar() {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`text-[9px] uppercase tracking-[0.5em] font-bold font-display transition-all duration-500 relative pb-2 whitespace-nowrap ${
+                    className={`text-[9px] uppercase tracking-[0.5em] font-bold font-display transition-all duration-300 relative pb-2 whitespace-nowrap ${
                       isActive
                         ? 'text-brand-gold'
                         : useWhiteText
@@ -125,7 +126,7 @@ export default function Navbar() {
               })}
               <Link
                 to="/kontakt"
-                className={`px-6 py-3 -translate-y-[4px] rounded-full text-[9px] uppercase tracking-[0.4em] font-bold font-display transition-all duration-700 whitespace-nowrap ${
+                className={`px-6 py-3 -translate-y-[4px] rounded-full text-[9px] uppercase tracking-[0.4em] font-bold font-display transition-all duration-300 whitespace-nowrap ${
                   useWhiteText
                     ? 'bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand-wood'
                     : 'bg-brand-wood-deep text-brand-cream hover:bg-brand-gold hover:text-brand-wood-deep'
@@ -137,12 +138,16 @@ export default function Navbar() {
 
             {/* Mobile Toggle */}
             <button
-              className={`lg:hidden p-2 transition-colors duration-500 ${
+              type="button"
+              aria-label={isOpen ? 'Zapri meni' : 'Odpri meni'}
+              aria-expanded={isOpen}
+              aria-controls="mobile-nav"
+              className={`lg:hidden p-2 transition-colors duration-300 ${
                 useWhiteText ? 'text-white' : 'text-brand-wood'
               }`}
               onClick={() => setIsOpen(!isOpen)}
             >
-              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isOpen ? <X className="w-5 h-5" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
             </button>
           </div>
         </div>
@@ -152,6 +157,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-nav"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}

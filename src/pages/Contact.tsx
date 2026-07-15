@@ -1,5 +1,6 @@
+import { useSeo } from '../lib/seo';
 import { motion } from 'motion/react';
-import { Phone, Mail, MapPin, Instagram, Facebook, Send } from 'lucide-react';
+import { Phone, Mail, MapPin, Instagram, Facebook, Send, Info } from 'lucide-react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -17,6 +18,10 @@ const cardVariants = {
 };
 
 export default function Contact() {
+  useSeo(
+    'Kontakt & lokacija | Pod Slavnikom',
+    'Kontaktirajte gostišče Pod Slavnikom v Podgorju — telefon, e-pošta in lokacija ob vznožju Slavnika. Rezervacije mize, nastanitve in SPA termina.',
+  );
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -31,7 +36,7 @@ export default function Contact() {
           <span className="text-brand-gold uppercase tracking-[0.6em] text-[9px] font-bold block mb-10 font-display">Kontakt & Lokacija</span>
           <h1 className="text-6xl md:text-[90px] font-serif mb-12 max-w-5xl mx-auto leading-[0.85] tracking-tighter italic">Z veseljem vas <br /> pričakujemo.</h1>
           <div className="w-20 h-[1px] bg-brand-gold mx-auto mb-12"></div>
-          <p className="text-brand-stone text-xl max-w-2xl mx-auto leading-relaxed font-serif italic">
+          <p className="text-brand-stone text-xl max-w-2xl mx-auto leading-relaxed font-serif">
             Imate vprašanje o naši ponudbi ali želite rezervirati svoj termin? Izpolnite spodnji obrazec ali nas kontaktirajte prek spodnjih podatkov.
           </p>
         </div>
@@ -59,7 +64,7 @@ export default function Contact() {
             </div>
 
             <div className="bg-brand-wood text-brand-cream p-16 rounded-[60px] luxury-shadow relative overflow-hidden group border border-brand-gold/15">
-               <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
+               <div className="absolute inset-0 opacity-[0.05] pointer-events-none grain-texture"></div>
                <div className="relative z-10">
                  <div className="flex items-start gap-6 mb-12">
                     <div className="w-14 h-14 bg-brand-gold rounded-2xl flex items-center justify-center shrink-0 shadow-2xl skew-x-3">
@@ -88,9 +93,10 @@ export default function Contact() {
                  
                  <div className="flex flex-col sm:flex-row gap-6">
                     <a href="https://share.google/ouZrP5566c06oagoZ" target="_blank" rel="noopener noreferrer" className="flex-1 bg-brand-gold text-brand-wood px-8 py-5 rounded-full text-[10px] uppercase tracking-[0.3em] font-bold font-display text-center hover:bg-white transition-all duration-500 luxury-shadow">Odpri v Google Maps</a>
+                    {/* Social profiles pending — non-interactive until the owner supplies URLs */}
                     <div className="flex gap-4 justify-center">
-                       <a href="#" className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-wood hover:border-brand-gold transition-all duration-500"><Instagram className="w-5 h-5" /></a>
-                       <a href="#" className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-wood hover:border-brand-gold transition-all duration-500"><Facebook className="w-5 h-5" /></a>
+                       <span role="img" aria-label="Instagram – povezava bo dodana" title="Povezava bo dodana" className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center text-brand-cream/40"><Instagram className="w-5 h-5" aria-hidden="true" /></span>
+                       <span role="img" aria-label="Facebook – povezava bo dodana" title="Povezava bo dodana" className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center text-brand-cream/40"><Facebook className="w-5 h-5" aria-hidden="true" /></span>
                     </div>
                  </div>
                </div>
@@ -107,17 +113,17 @@ export default function Contact() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div className="space-y-4">
                   <label className="block text-[9px] uppercase tracking-[0.4em] font-black text-brand-gold font-display">Ime in priimek</label>
-                  <input type="text" className="w-full bg-brand-warm-gray/50 border-b border-brand-wood/10 rounded-2xl p-6 focus:bg-white focus:border-brand-gold transition-all outline-none font-serif italic text-lg" placeholder="Janez Novak" />
+                  <input type="text" className="w-full bg-brand-warm-gray/50 border-b border-brand-wood/10 rounded-2xl p-6 focus:bg-white focus:border-brand-gold transition-all outline-none font-sans text-lg" placeholder="Janez Novak" />
                 </div>
                 <div className="space-y-4">
                   <label className="block text-[9px] uppercase tracking-[0.4em] font-black text-brand-gold font-display">E-naslov</label>
-                  <input type="email" className="w-full bg-brand-warm-gray/50 border-b border-brand-wood/10 rounded-2xl p-6 focus:bg-white focus:border-brand-gold transition-all outline-none font-serif italic text-lg" placeholder="janez@primer.si" />
+                  <input type="email" className="w-full bg-brand-warm-gray/50 border-b border-brand-wood/10 rounded-2xl p-6 focus:bg-white focus:border-brand-gold transition-all outline-none font-sans text-lg" placeholder="janez@primer.si" />
                 </div>
               </div>
               <div className="space-y-4">
                 <label className="block text-[9px] uppercase tracking-[0.4em] font-black text-brand-gold font-display">Vrsta povpraševanja</label>
                 <div className="relative">
-                  <select className="w-full bg-brand-warm-gray/50 border-b border-brand-wood/10 rounded-2xl p-6 focus:bg-white focus:border-brand-gold transition-all outline-none appearance-none font-serif italic text-lg">
+                  <select className="w-full bg-brand-warm-gray/50 border-b border-brand-wood/10 rounded-2xl p-6 focus:bg-white focus:border-brand-gold transition-all outline-none appearance-none font-sans text-lg">
                     <option>Rezervacija mize v restavraciji</option>
                     <option>Nastanitev - Prenočišča</option>
                     <option>Rezervacija SPA termina</option>
@@ -129,16 +135,22 @@ export default function Contact() {
               </div>
               <div className="space-y-4">
                 <label className="block text-[9px] uppercase tracking-[0.4em] font-black text-brand-gold font-display">Vaše sporočilo</label>
-                <textarea rows={5} className="w-full bg-brand-warm-gray/50 border-b border-brand-wood/10 rounded-[32px] p-6 focus:bg-white focus:border-brand-gold transition-all outline-none resize-none font-serif italic text-lg" placeholder="Zapišite vaše želje ali vprašanja..."></textarea>
+                <textarea rows={5} className="w-full bg-brand-warm-gray/50 border-b border-brand-wood/10 rounded-[32px] p-6 focus:bg-white focus:border-brand-gold transition-all outline-none resize-none font-sans text-lg" placeholder="Zapišite vaše želje ali vprašanja..."></textarea>
               </div>
               <div className="flex items-start gap-4 p-4">
                 <div className="pt-1">
                    <input type="checkbox" className="w-5 h-5 rounded accent-brand-gold" id="privacy" />
                 </div>
-                <label htmlFor="privacy" className="text-[10px] text-brand-stone leading-relaxed uppercase tracking-widest font-medium font-sans">Strinjam se z <a href="#" className="text-brand-gold underline decoration-brand-gold/20">varstvom osebnih podatkov</a> in pravili uporabe spletne strani.</label>
+                <label htmlFor="privacy" className="text-[10px] text-brand-stone leading-relaxed uppercase tracking-widest font-medium font-sans">Strinjam se z <span className="text-brand-gold" title="Dokument bo dodan v končni različici">varstvom osebnih podatkov</span> in pravili uporabe spletne strani.</label>
               </div>
-              <button type="submit" className="w-full bg-brand-wood text-white px-12 py-8 rounded-full text-xs uppercase tracking-[0.5em] font-black font-display hover:bg-brand-gold hover:text-brand-wood hover:scale-[1.02] transition-all duration-500 luxury-shadow flex items-center justify-center gap-6 group">
-                Pošljite sporočilo <Send className="w-5 h-5 transition-transform group-hover:translate-x-2 group-hover:-translate-y-2" />
+              <div className="rounded-3xl bg-brand-warm-gray/60 border border-brand-gold/15 p-6 flex items-start gap-4">
+                <Info className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" aria-hidden="true" />
+                <p className="text-xs text-brand-stone leading-relaxed font-sans">
+                  Spletno pošiljanje sporočil bo omogočeno v končni različici spletne strani. Do takrat vas prosimo, da nas za rezervacije in povpraševanja pokličete na <a href="tel:+38641321379" className="text-brand-gold font-semibold hover:underline">+386 41 321 379</a> ali pišete na <a href="mailto:info@podslavnikom.si" className="text-brand-gold font-semibold hover:underline">info@podslavnikom.si</a>.
+                </p>
+              </div>
+              <button type="submit" aria-disabled="true" title="Spletno pošiljanje bo omogočeno v končni različici" className="w-full bg-brand-wood text-white px-12 py-8 rounded-full text-xs uppercase tracking-[0.5em] font-black font-display hover:bg-brand-gold hover:text-brand-wood hover:scale-[1.02] transition-all duration-500 luxury-shadow flex items-center justify-center gap-6 group">
+                Pošljite sporočilo <Send className="w-5 h-5 transition-transform group-hover:translate-x-2 group-hover:-translate-y-2" aria-hidden="true" />
               </button>
             </form>
           </motion.div>
@@ -146,8 +158,8 @@ export default function Contact() {
       </section>
 
       {/* FAQ Sections - Refined Reveal */}
-      <section className="py-48 px-6 bg-brand-warm-gray/30 relative">
-        <div className="absolute inset-0 opacity-[0.4] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
+      <section className="py-28 md:py-32 px-6 bg-brand-warm-gray/30 relative">
+        <div className="absolute inset-0 opacity-[0.4] pointer-events-none grain-texture"></div>
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-24">
             <span className="text-brand-gold text-[10px] uppercase tracking-[0.5em] font-bold block mb-4 font-display">Pogosta vprašanja</span>

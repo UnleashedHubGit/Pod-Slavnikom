@@ -1,7 +1,7 @@
-import { useParams, Link, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useSeo } from '../lib/seo';
+import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { ArrowLeft, Wifi, Calendar, Euro, Info, Check, ShieldAlert } from 'lucide-react';
+import { ArrowLeft, Info, Check, ShieldAlert } from 'lucide-react';
 
 const roomDetails = {
   'enoposteljna-soba-5': {
@@ -148,24 +148,13 @@ function BentralWidget({ url }: { url: string }) {
 
 export default function RoomDetail() {
   const { roomId } = useParams<{ roomId: string }>();
-  const location = useLocation();
-
-  useEffect(() => {
-    const hash = location.hash;
-    if (hash) {
-      const id = hash.replace('#', '');
-      setTimeout(() => {
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 300);
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  }, [roomId, location.hash]);
 
   const room = roomId ? roomDetails[roomId as keyof typeof roomDetails] : null;
+
+  useSeo(
+    room ? `${room.name} | Sobe Pod Slavnikom` : 'Soba | Pod Slavnikom',
+    room ? room.desc : 'Nastanitev v gostišču Pod Slavnikom ob vznožju Slavnika. Neposredna rezervacija prek sistema Bentral.',
+  );
 
   if (!room) {
     return (

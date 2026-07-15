@@ -1,6 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
+/* Self-contained paper/granite grain (inline SVG fractal noise).
+   Replaces external transparenttextures.com requests — no network fetch,
+   no new dependency, no binary asset. Used at low opacity for a premium grain. */
+:root {
+  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* Utility so inline elements can reuse the local grain (replaces bg-[url(...)]). */
+.grain-texture {
+  background-image: var(--paper-grain);
+  background-repeat: repeat;
+}
+
 @theme {
   --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", serif;
@@ -31,7 +44,7 @@
   body::before {
     content: "";
     @apply fixed inset-0 z-[100] opacity-[0.03] pointer-events-none;
-    background-image: url("https://www.transparenttextures.com/patterns/granite.png");
+    background-image: var(--paper-grain);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -116,7 +129,7 @@
 
 .noise-overlay {
   @apply fixed inset-0 z-[9999] opacity-[0.05] pointer-events-none;
-  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  background-image: var(--paper-grain);
 }
 
 /* Custom timing for buttery smooth transitions */
@@ -142,6 +155,19 @@
   scrollbar-width: none;
 }
 
+/* Respect users who prefer reduced motion: neutralise transitions,
+   animations and smooth scrolling site-wide (covers navbar + motion). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Subtle grain for all sections */
 section {
   position: relative;
@@ -150,5 +176,5 @@ section {
 section::after {
   content: "";
   @apply absolute inset-0 z-0 opacity-[0.015] pointer-events-none;
-  background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+  background-image: var(--paper-grain);
 }

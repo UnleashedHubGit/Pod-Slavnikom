@@ -1,3 +1,4 @@
+import { useSeo } from '../lib/seo';
 import { motion } from 'motion/react';
 import { Compass, ShieldCheck, Award, Heart } from 'lucide-react';
 
@@ -17,6 +18,10 @@ const cardVariants = {
 };
 
 export default function About() {
+  useSeo(
+    'O nas | Gostišče Pod Slavnikom',
+    'Zgodba gostišča Pod Slavnikom in gostitelja Igorja — pristna gostoljubnost, tradicija in domačnost ob vznožju Slavnika v slovenski Istri.',
+  );
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -38,7 +43,7 @@ export default function About() {
               <span className="italic text-brand-gold font-serif">da se v njem ustaviš.</span>
             </h1>
             <div className="w-16 h-[1px] bg-brand-gold mb-10"></div>
-            <p className="text-brand-wood/80 text-lg mb-8 leading-relaxed font-serif italic max-w-md">
+            <p className="text-brand-wood/80 text-lg mb-8 leading-relaxed font-serif max-w-md">
               Gostišče Pod Slavnikom ni hotel. Je hiša, ki ima dušo — in kuhinja, ki ima spomin. Za mizo pri nas ne sediš med tujci. Sediš tam, kjer so sedeli gostje, ki so se prvič ustavili le za eno noč in se vračali vsako jesen.
             </p>
           </div>
@@ -48,7 +53,7 @@ export default function About() {
                   src="/images/client/restaurant/restaurant-interior-01.jpg"
                   className="w-full h-full object-cover transition-transform duration-[8s] group-hover:scale-105" 
                   alt="Notranjost gostišča" 
-                  referrerPolicy="no-referrer"
+                  referrerPolicy="no-referrer" loading="lazy" decoding="async"
                 />
                 <div className="absolute inset-0 bg-brand-wood-deep/10 group-hover:bg-transparent transition-colors"></div>
              </div>
@@ -61,9 +66,9 @@ export default function About() {
 
       {/* Narrative Section with Forest Background */}
       <section className="bg-brand-wood text-brand-cream py-32 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none grain-texture"></div>
         <div className="max-w-4xl mx-auto text-center relative z-10 space-y-12">
-          <p className="text-xl md:text-2xl leading-relaxed font-serif italic text-brand-cream/90 font-light">
+          <p className="text-xl md:text-2xl leading-relaxed font-serif text-brand-cream/90 font-light">
             "Podgorje je vasica, kjer čas teče drugače. Na meji dveh svetov — mediteranskega in celinskega, Krasa in Istre, gozda in morja. Ta razpoka med klimama je razlog, da tu divjačina okusi drugače, da je pomlad daljša in jesen bogatejša."
           </p>
           <div className="w-12 h-[1px] bg-brand-gold mx-auto"></div>
@@ -122,12 +127,12 @@ export default function About() {
            src="/images/client/additional/main-exterior-03.jpg"
            className="w-full h-full object-cover transition-transform duration-[10s] hover:scale-105"
            alt="Pod Slavnikom Okolica"
-           referrerPolicy="no-referrer"
+           referrerPolicy="no-referrer" loading="lazy" decoding="async"
          />
          <div className="absolute inset-0 bg-brand-wood-deep/30"></div>
          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
             <span className="text-brand-gold text-[11px] uppercase tracking-[0.5em] font-bold mb-6 font-display">Pridružite se nam</span>
-            <h2 className="text-white text-4xl md:text-7xl font-serif leading-[1.1] tracking-tight italic">
+            <h2 className="text-white text-4xl md:text-6xl font-serif leading-[1.1] tracking-tight italic">
               Zaspite tam, kjer je edini <br />
               zvok burja med borovci.
             </h2>

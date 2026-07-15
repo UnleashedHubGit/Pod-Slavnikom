@@ -1,5 +1,6 @@
+import { useSeo } from '../lib/seo';
 import { motion } from 'motion/react';
-import { ChefHat, ArrowRight, Heart, Sparkles } from 'lucide-react';
+import RestaurantMenu from '../components/RestaurantMenu';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -17,6 +18,10 @@ const cardVariants = {
 };
 
 export default function Restaurant() {
+  useSeo(
+    'Gostilna & kulinarika | Pod Slavnikom',
+    'Divjačina iz slovenskih gozdov, ročno izdelani ravioli in degustacijski meniji. Medvedja večerja (La Cena dell’Orso) v kamniti kleti gostišča Pod Slavnikom.',
+  );
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -34,7 +39,7 @@ export default function Restaurant() {
           <span className="italic text-brand-gold font-serif">od kod prihaja.</span>
         </h1>
         <div className="w-16 h-[1px] bg-brand-gold mx-auto"></div>
-        <p className="text-brand-stone text-xl leading-relaxed font-serif max-w-2xl mx-auto italic font-light">
+        <p className="text-brand-stone text-xl leading-relaxed font-serif max-w-2xl mx-auto font-light">
           V naši kuhinji ni skrivnosti. Meso pride iz gozda, ki ga vidiš skozi okno. Zelišča iz vrta za hišo. Ravioli so narejeni z rokami — in ko jih dobiš na mizo, to čutiš.
         </p>
       </section>
@@ -46,7 +51,7 @@ export default function Restaurant() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="max-w-7xl mx-auto px-6 space-y-32"
+          className="max-w-7xl mx-auto px-6 space-y-20 md:space-y-24"
         >
           
           {/* Section 1: Meso iz slovenskih gozdov */}
@@ -70,7 +75,7 @@ export default function Restaurant() {
                 src="/images/client/restaurant/restaurant-food-02.jpg"
                 className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
                 alt="Divjačinska jed" 
-                referrerPolicy="no-referrer"
+                referrerPolicy="no-referrer" loading="lazy" decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
             </div>
@@ -83,7 +88,7 @@ export default function Restaurant() {
                 src="https://images.unsplash.com/photo-1587740908075-9e245070dfaa?w=1400&q=80" 
                 className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
                 alt="Domači ravioli" 
-                referrerPolicy="no-referrer"
+                referrerPolicy="no-referrer" loading="lazy" decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
             </div>
@@ -106,14 +111,17 @@ export default function Restaurant() {
         </motion.div>
       </section>
 
+      {/* Menu Navigation (client-approved tabs) */}
+      <RestaurantMenu />
+
       {/* Signature Event: Medvedja večerja */}
-      <section className="relative py-40 px-6 bg-brand-bark-deep text-brand-cream overflow-hidden">
+      <section className="relative py-24 md:py-28 px-6 bg-brand-bark-deep text-brand-cream overflow-hidden">
         <div className="absolute inset-0 opacity-20 mix-blend-overlay">
           <img 
             src="/images/client/restaurant/restaurant-interior-01.jpg"
             className="w-full h-full object-cover filter blur-[1px]" 
             alt="Medvedja večerja ambient" 
-            referrerPolicy="no-referrer"
+            referrerPolicy="no-referrer" loading="lazy" decoding="async"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#180f08]/90 via-transparent to-[#180f08]/95 opacity-95"></div>
@@ -122,28 +130,18 @@ export default function Restaurant() {
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-gold/5 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-10">
-          <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-bold block font-display">Signature event</span>
+          <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-bold block font-display">Poseben dogodek</span>
           <h2 className="text-4xl md:text-6xl font-serif text-brand-cream leading-tight">
-            La Cena dell'Orso <br />
-            <span className="italic text-brand-gold font-serif">Medvedja večerja</span>
+            Medvedja večerja
           </h2>
+          <span className="block text-brand-gold/80 text-sm md:text-base font-serif italic tracking-wide">La Cena dell'Orso</span>
           <div className="w-16 h-[1px] bg-brand-gold mx-auto"></div>
-          <p className="text-brand-cream/90 text-lg font-serif italic max-w-2xl mx-auto leading-relaxed">
+          <p className="text-brand-cream/90 text-lg font-serif max-w-2xl mx-auto leading-relaxed">
             Enkrat na leto, ko sezona to dovoli, prižgemo luči v kleti. Postavimo dolgo mizo. In za tiste, ki so pravočasno rezervirali, pripravljamo večerjo, ki je ni v nobenem restavracijskem vodniku.
           </p>
           <p className="text-brand-cream/75 text-sm max-w-xl mx-auto leading-relaxed font-sans">
             Medvedina je meso, ki ga v Evropi zakonito postreže le peščica kuhinj. Je bogato, temno, z noto gozdnih tal. Vsak hod prinese drugačno pripravo. Vino iz naše kleti. Tišina, ki jo prekinejo le pogovori za mizo.
           </p>
-
-          <div className="border border-brand-gold/25 bg-brand-bark-deep/80 backdrop-blur-md p-10 max-w-xl mx-auto rounded-[32px] luxury-shadow">
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <Sparkles className="w-4 h-4 text-brand-gold" />
-              <span className="block text-brand-gold-light text-[9px] tracking-widest uppercase font-bold">🇮🇹 Italiano</span>
-            </div>
-            <p className="text-brand-cream/90 font-serif italic text-sm leading-relaxed">
-              La Cena dell'Orso è un'esperienza gastronomica unica nel suo genere — un menù di selvaggina autentica, servito nella cantina di pietra del Gostišče Pod Slavnikom.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -156,7 +154,7 @@ export default function Restaurant() {
               src="https://images.unsplash.com/photo-1587740908075-9e245070dfaa?w=1400&q=80" 
               className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
               alt="Naši ravioli pridejo tudi domov" 
-              referrerPolicy="no-referrer"
+              referrerPolicy="no-referrer" loading="lazy" decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
           </div>
@@ -182,11 +180,11 @@ export default function Restaurant() {
 
       {/* Reservation Section */}
       <section className="py-24 px-6 bg-brand-cream-soft text-center border-t border-brand-gold/10 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none grain-texture"></div>
         <div className="max-w-3xl mx-auto space-y-8 relative z-10">
           <span className="text-brand-gold text-[10px] uppercase tracking-[0.4em] font-bold block font-display">Rezervacija mize</span>
           <h2 className="text-4xl md:text-6xl font-serif text-brand-wood italic">Doživite pristne okuse.</h2>
-          <p className="text-brand-stone text-lg leading-relaxed max-w-xl mx-auto font-serif italic font-light">
+          <p className="text-brand-stone text-lg leading-relaxed max-w-xl mx-auto font-serif font-light">
             Svetujemo rezervacijo vsaj 2 dni vnaprej. Pokličite nas in si zagotovite svojo mizo v našem pristnem ambientu.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center pt-6">

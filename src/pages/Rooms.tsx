@@ -1,3 +1,4 @@
+import { useSeo } from '../lib/seo';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { BadgeInfo } from 'lucide-react';
@@ -48,6 +49,10 @@ const cardVariants = {
 };
 
 export default function Rooms() {
+  useSeo(
+    'Sobe & prenočišča | Pod Slavnikom',
+    'Udobne sobe in podstrešna suite ob vznožju Slavnika v Podgorju. Preverite razpoložljivost in rezervirajte neposredno prek sistema Bentral.',
+  );
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -66,7 +71,7 @@ export default function Rooms() {
               Soba, ki je ne boš <br />
               <span className="italic text-brand-gold">zapustil hitro.</span>
             </h1>
-            <p className="text-brand-stone text-lg leading-relaxed font-serif italic font-light">
+            <p className="text-brand-stone text-lg leading-relaxed font-serif font-light">
               Naše sobe ponujajo udobno kraško-alpsko zavetje. Les, kamen, naravni materiali. Pogled na borov gozd ali na urejen gorski vrt.
             </p>
           </div>
@@ -102,7 +107,7 @@ export default function Rooms() {
                   src={room.image} 
                   className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
                   alt={room.name} 
-                  referrerPolicy="no-referrer"
+                  referrerPolicy="no-referrer" loading="lazy" decoding="async"
                 />
                 <span className="absolute top-6 left-6 bg-brand-gold text-brand-wood text-[9px] uppercase tracking-[0.2em] font-bold py-2 px-5 rounded-full shadow-lg z-10">
                   {room.tag}
@@ -154,7 +159,7 @@ export default function Rooms() {
               </p>
               <div className="flex items-center gap-2 pt-4 font-sans">
                 <BadgeInfo className="w-4 h-4 text-brand-gold-light" />
-                <span className="text-[11px] uppercase tracking-wider text-brand-cream/50">Lahko preverite razpoložljivost tudi na <a href="https://booking.com" target="_blank" rel="noopener noreferrer" className="underline text-brand-gold hover:text-brand-gold-light">Booking.com ↗</a></span>
+                <span className="text-[11px] uppercase tracking-wider text-brand-cream/50">Razpoložljivost in proste termine preverite <Link to="/sobe/dvoposteljna-soba#rezervacija" className="underline text-brand-gold hover:text-brand-gold-light">neposredno prek sistema Bentral ↗</Link></span>
               </div>
             </div>
 

@@ -64,8 +64,8 @@ export default function BookingForm({ type, title, subtitle }: BookingFormProps)
               <div className="flex items-center justify-between mb-8">
                 <h4 className="text-brand-wood font-serif italic text-xl">Izberite datum</h4>
                 <div className="flex gap-2">
-                  <button onClick={prevMonth} className="p-2 hover:text-brand-gold transition-colors"><ChevronLeft className="w-5 h-5" /></button>
-                  <button onClick={nextMonth} className="p-2 hover:text-brand-gold transition-colors"><ChevronRight className="w-5 h-5" /></button>
+                  <button type="button" aria-label="Prejšnji mesec" onClick={prevMonth} className="p-2 hover:text-brand-gold transition-colors"><ChevronLeft className="w-5 h-5" aria-hidden="true" /></button>
+                  <button type="button" aria-label="Naslednji mesec" onClick={nextMonth} className="p-2 hover:text-brand-gold transition-colors"><ChevronRight className="w-5 h-5" aria-hidden="true" /></button>
                 </div>
               </div>
 
@@ -193,7 +193,7 @@ export default function BookingForm({ type, title, subtitle }: BookingFormProps)
                  <CalendarIcon className="w-10 h-10 text-brand-gold" />
               </div>
               <h3 className="text-4xl font-serif italic mb-6">Hvala za povpraševanje!</h3>
-              <p className="text-brand-stone font-serif italic text-lg leading-relaxed mb-12">
+              <p className="text-brand-stone font-serif text-lg leading-relaxed mb-12">
                 Vaš interes smo prejeli. Preverili bomo razpoložljivost in vam odgovorili na vaš email naslov v najkrajšem možnem času.
               </p>
               <button 
