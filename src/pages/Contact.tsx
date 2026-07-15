@@ -58,7 +58,7 @@ export default function Contact() {
               </div>
               <div className="group">
                 <span className="text-brand-gold text-[9px] uppercase tracking-widest font-black block mb-6 font-display">Elektronska pošta</span>
-                <a href="mailto:info@podslavnikom.si" className="text-2xl font-serif text-brand-wood hover:text-brand-gold transition-colors duration-500 italic block underline-offset-8 decoration-brand-gold/20 hover:decoration-brand-gold">info@podslavnikom.si</a>
+                <a href="mailto:podslavnikom@gmail.com" className="text-2xl font-serif text-brand-wood hover:text-brand-gold transition-colors duration-500 italic block underline-offset-8 decoration-brand-gold/20 hover:decoration-brand-gold">podslavnikom@gmail.com</a>
                 <p className="text-xs text-brand-stone/60 mt-4 font-light font-sans">Za povpraševanja in darilne bone.</p>
               </div>
             </div>
@@ -93,10 +93,25 @@ export default function Contact() {
                  
                  <div className="flex flex-col sm:flex-row gap-6">
                     <a href="https://share.google/ouZrP5566c06oagoZ" target="_blank" rel="noopener noreferrer" className="flex-1 bg-brand-gold text-brand-wood px-8 py-5 rounded-full text-[10px] uppercase tracking-[0.3em] font-bold font-display text-center hover:bg-white transition-all duration-500 luxury-shadow">Odpri v Google Maps</a>
-                    {/* Social profiles pending — non-interactive until the owner supplies URLs */}
                     <div className="flex gap-4 justify-center">
-                       <span role="img" aria-label="Instagram – povezava bo dodana" title="Povezava bo dodana" className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center text-brand-cream/40"><Instagram className="w-5 h-5" aria-hidden="true" /></span>
-                       <span role="img" aria-label="Facebook – povezava bo dodana" title="Povezava bo dodana" className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center text-brand-cream/40"><Facebook className="w-5 h-5" aria-hidden="true" /></span>
+                       <a
+                         href="https://www.instagram.com/podslavnikom/"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                         aria-label="Odpri Instagram profil Gostilne Pod Slavnikom"
+                         className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center text-brand-cream/70 hover:text-brand-gold hover:border-brand-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold"
+                       >
+                         <Instagram className="w-5 h-5" aria-hidden="true" />
+                       </a>
+                       <a
+                         href="https://www.facebook.com/gostilna.podslavnikom/"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                         aria-label="Odpri Facebook stran Gostilne Pod Slavnikom"
+                         className="w-14 h-14 rounded-2xl border border-white/10 flex items-center justify-center text-brand-cream/70 hover:text-brand-gold hover:border-brand-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold"
+                       >
+                         <Facebook className="w-5 h-5" aria-hidden="true" />
+                       </a>
                     </div>
                  </div>
                </div>
@@ -146,7 +161,7 @@ export default function Contact() {
               <div className="rounded-3xl bg-brand-warm-gray/60 border border-brand-gold/15 p-6 flex items-start gap-4">
                 <Info className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" aria-hidden="true" />
                 <p className="text-xs text-brand-stone leading-relaxed font-sans">
-                  Spletno pošiljanje sporočil bo omogočeno v končni različici spletne strani. Do takrat vas prosimo, da nas za rezervacije in povpraševanja pokličete na <a href="tel:+38641321379" className="text-brand-gold font-semibold hover:underline">+386 41 321 379</a> ali pišete na <a href="mailto:info@podslavnikom.si" className="text-brand-gold font-semibold hover:underline">info@podslavnikom.si</a>.
+                  Spletno pošiljanje sporočil bo omogočeno v končni različici spletne strani. Do takrat vas prosimo, da nas za rezervacije in povpraševanja pokličete na <a href="tel:+38641321379" className="text-brand-gold font-semibold hover:underline">+386 41 321 379</a> ali pišete na <a href="mailto:podslavnikom@gmail.com" className="text-brand-gold font-semibold hover:underline">podslavnikom@gmail.com</a>.
                 </p>
               </div>
               <button type="submit" aria-disabled="true" title="Spletno pošiljanje bo omogočeno v končni različici" className="w-full bg-brand-wood text-white px-12 py-8 rounded-full text-xs uppercase tracking-[0.5em] font-black font-display hover:bg-brand-gold hover:text-brand-wood hover:scale-[1.02] transition-all duration-500 luxury-shadow flex items-center justify-center gap-6 group">

@@ -18,10 +18,25 @@ export default function Footer() {
           <p className="text-brand-cream/70 text-sm leading-relaxed max-w-sm font-light font-sans">
             Divjačina, ki ve, od kod prihaja. Wellness, ki je samo vaš. Soba, ki je ne boš zapustil hitro.
           </p>
-          {/* Social profiles pending — non-interactive placeholders until the owner supplies URLs */}
           <div className="flex space-x-6">
-            <span role="img" aria-label="Instagram – povezava bo dodana" title="Povezava bo dodana" className="w-10 h-10 rounded-full border border-brand-cream/10 flex items-center justify-center text-brand-cream/40"><Instagram className="w-4 h-4" aria-hidden="true" /></span>
-            <span role="img" aria-label="Facebook – povezava bo dodana" title="Povezava bo dodana" className="w-10 h-10 rounded-full border border-brand-cream/10 flex items-center justify-center text-brand-cream/40"><Facebook className="w-4 h-4" aria-hidden="true" /></span>
+            <a
+              href="https://www.instagram.com/podslavnikom/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Odpri Instagram profil Gostilne Pod Slavnikom"
+              className="w-10 h-10 rounded-full border border-brand-cream/10 flex items-center justify-center text-brand-cream/60 hover:text-brand-gold hover:border-brand-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold"
+            >
+              <Instagram className="w-4 h-4" aria-hidden="true" />
+            </a>
+            <a
+              href="https://www.facebook.com/gostilna.podslavnikom/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Odpri Facebook stran Gostilne Pod Slavnikom"
+              className="w-10 h-10 rounded-full border border-brand-cream/10 flex items-center justify-center text-brand-cream/60 hover:text-brand-gold hover:border-brand-gold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold"
+            >
+              <Facebook className="w-4 h-4" aria-hidden="true" />
+            </a>
           </div>
         </div>
 
@@ -49,7 +64,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-4">
               <Mail className="w-4 h-4 text-brand-gold shrink-0" />
-              <a href="mailto:info@podslavnikom.si" className="hover:text-brand-gold transition-colors font-sans">info@podslavnikom.si</a>
+              <a href="mailto:podslavnikom@gmail.com" className="hover:text-brand-gold transition-colors font-sans">podslavnikom@gmail.com</a>
             </li>
           </ul>
         </div>
