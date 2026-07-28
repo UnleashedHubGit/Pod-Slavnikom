@@ -268,7 +268,14 @@ export default function Home() {
               <div className="overflow-hidden rounded-[100px] luxury-shadow border border-white/5">
                 <img src="/images/client/additional/main-exterior-04.jpg" className="w-full aspect-[4/5] object-cover transition-transform duration-[5s] group-hover:scale-105" alt="Pod Slavnikom pod pobočjem Slavnika" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
               </div>
-              <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-brand-gold rounded-full flex items-center justify-center p-8 text-brand-wood text-center text-[10px] uppercase font-black tracking-widest luxury-shadow border-4 border-brand-wood -rotate-6">
+              {/* The badge hangs -40px off its column and the -rotate-6 adds ~8px
+                  of bleed, so it needs ~49px of container inset to clear the
+                  section edge. max-w-7xl only provides that once the viewport is
+                  wide enough to centre the container (≈1400px); below that the
+                  inset is just px-6, so the overhang is reduced to keep the badge
+                  inside the section's overflow-hidden. Mobile and ≥1400px keep the
+                  original -left-10 composition. */}
+              <div className="absolute -bottom-10 -left-10 min-[1024px]:max-[1399px]:-left-2 w-44 h-44 bg-brand-gold rounded-full flex items-center justify-center p-8 text-brand-wood text-center text-[10px] uppercase font-black tracking-widest luxury-shadow border-4 border-brand-wood -rotate-6">
                 Skriti dragulj slovenske Istre
               </div>
            </div>

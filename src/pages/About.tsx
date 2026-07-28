@@ -31,9 +31,14 @@ export default function About() {
       className="pt-32"
     >
       {/* Editorial Header */}
-      <section className="px-6 py-20 max-w-7xl mx-auto relative">
+      {/* overflow-hidden keeps the decorative gold blur inside the section; on
+          narrow viewports its 20rem circle would otherwise push the page wider. */}
+      <section className="px-6 py-20 max-w-7xl mx-auto relative overflow-hidden">
         <div className="absolute top-0 left-1/4 w-80 h-80 bg-brand-gold/5 blur-[100px] rounded-full pointer-events-none"></div>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+        {/* Same 12-track gutter maths as the SPA intro: 11 × 96px of lg:gap-24
+            exceeds the content box at 1024px and pushed the portrait out of the
+            section. The wide gap starts at xl, so ≥1280px is unchanged. */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 xl:gap-24 items-center">
           <div className="lg:col-span-5 relative z-10">
             <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-bold block mb-8 font-display">O gostišču</span>
             <h1 className="text-4xl md:text-6xl font-serif mb-10 leading-[1.1] tracking-tight text-brand-wood">
@@ -86,7 +91,7 @@ export default function About() {
       </section>
 
       {/* Values & Philosophy Section */}
-      <section className="py-32 px-6 max-w-7xl mx-auto relative">
+      <section className="py-32 px-6 max-w-7xl mx-auto relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-gold/5 blur-[120px] rounded-full pointer-events-none"></div>
         <div className="text-center mb-24">
           <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-bold block mb-4 font-display">Vrednote</span>

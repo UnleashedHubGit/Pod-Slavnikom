@@ -181,7 +181,9 @@ export default function Surroundings() {
       className="pt-32"
     >
       {/* Surroundings Header */}
-      <section className="px-6 py-20 max-w-7xl mx-auto space-y-6 relative">
+      {/* overflow-hidden keeps the decorative gold blur inside the section; on
+          narrow viewports its 20rem circle would otherwise push the page wider. */}
+      <section className="px-6 py-20 max-w-7xl mx-auto space-y-6 relative overflow-hidden">
         <div className="absolute top-0 left-1/3 w-80 h-80 bg-brand-gold/5 blur-[100px] rounded-full pointer-events-none"></div>
         <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-bold block font-display">Okolica · Narava & poti</span>
         <h1 className="text-4xl md:text-6xl font-serif text-brand-wood leading-tight">
@@ -199,7 +201,11 @@ export default function Surroundings() {
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none grain-texture"></div>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-brand-wood-deep/80 rounded-[60px] border border-brand-gold/15 overflow-hidden">
-            <div className="lg:col-span-6 aspect-[4/3] md:aspect-square relative bg-brand-bark min-h-[400px]">
+            {/* w-full pins the inline size so the aspect ratio resolves height
+                from width. Without it, min-h-[400px] made the height definite and
+                the ratio derived a 533px width inside a 312px card, cropping ~40%
+                of the photo behind the card's rounded overflow-hidden. */}
+            <div className="lg:col-span-6 w-full aspect-[4/3] md:aspect-square relative bg-brand-bark min-h-[400px]">
               <img
                 src="/images/client/surroundings/slavnik-summit-viewpoint.webp"
                 className="w-full h-full object-cover object-center transition-transform duration-[8s] hover:scale-105"
@@ -247,7 +253,7 @@ export default function Surroundings() {
       </section>
 
       {/* Surrounding Paths Grid */}
-      <section className="py-24 px-6 max-w-7xl mx-auto space-y-16 relative">
+      <section className="py-24 px-6 max-w-7xl mx-auto space-y-16 relative overflow-hidden">
         <div className="absolute top-1/2 left-10 w-80 h-80 bg-brand-gold/5 blur-[100px] rounded-full pointer-events-none"></div>
         <motion.div 
           variants={containerVariants}
@@ -361,8 +367,14 @@ export default function Surroundings() {
               <span>Vzhod · Reka & Balkan →</span>
             </div>
 
-            <div className="overflow-x-auto pb-4 hide-scrollbar">
-              <div className="flex items-start min-width-[1000px] relative pt-4 min-w-[900px]">
+            {/* The corridor is a deliberately contained horizontal scroller: the
+                12 stops need ~900px to stay legible, so instead of shrinking the
+                labels the row scrolls inside its own box. hide-scrollbar is gone
+                (the scrollbar is now an affordance, not noise) and the edge fade
+                marks the cut wherever the row does not fit. */}
+            <div className="relative">
+              <div className="overflow-x-auto pb-4 overscroll-x-contain">
+                <div className="flex items-start relative pt-4 min-w-[900px]">
                 <div className="absolute top-7 left-[4%] right-[4%] h-[1px] bg-gradient-to-r from-transparent via-brand-gold/40 to-transparent"></div>
                 {corridorStops.map((stop, idx) => (
                   <div key={idx} className="flex-1 text-center relative z-10 space-y-4">
@@ -380,7 +392,12 @@ export default function Surroundings() {
                     }`}>{stop.name}</span>
                   </div>
                 ))}
+                </div>
               </div>
+              <div
+                aria-hidden="true"
+                className="lg:hidden pointer-events-none absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-brand-wood-deep to-transparent"
+              />
             </div>
           </div>
 

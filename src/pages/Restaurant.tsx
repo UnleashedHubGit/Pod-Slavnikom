@@ -1,6 +1,8 @@
 import { useSeo } from '../lib/seo';
 import { motion } from 'motion/react';
+import { Mail } from 'lucide-react';
 import RestaurantMenu from '../components/RestaurantMenu';
+import { OpeningHoursFull } from '../components/OpeningHours';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -40,7 +42,7 @@ export default function Restaurant() {
         </h1>
         <div className="w-16 h-[1px] bg-brand-gold mx-auto"></div>
         <p className="text-brand-stone text-xl leading-relaxed font-serif max-w-2xl mx-auto font-light">
-          V naši kuhinji ni skrivnosti. Meso pride iz gozda, ki ga vidiš skozi okno. Zelišča iz vrta za hišo. Ravioli so narejeni z rokami — in ko jih dobiš na mizo, to čutiš.
+          Ne sledimo trendom. Sledimo naravi. Divjačina iz slovenskih gozdov, ročno pripravljeni ravioli, njoki in fuži ter sezonske sestavine ustvarjajo kulinariko, ki je pristna, iskrena in neločljivo povezana s Pod Slavnikom.
         </p>
       </section>
 
@@ -100,11 +102,33 @@ export default function Restaurant() {
               </h2>
               <div className="w-12 h-[1px] bg-brand-gold"></div>
               <p className="text-brand-stone leading-relaxed text-base">
-                Ravioli Pod Slavnikom so nastali iz želje, da bi tudi sami naredili nekaj posebnega. Virgilija in Boris sta pred mnogimi leti vložila veliko časa v to, da jih danes lahko ponudimo takšne, kot so.
+                Ravioli Pod Slavnikom so nastali iz želje ustvariti izdelek, na katerega smo lahko ponosni. Z leti smo recepture izpopolnjevali in danes jih pripravljamo z enakim spoštovanjem do kakovosti, kot ga namenjamo jedem v naši gostilni.
               </p>
-              <p className="text-brand-stone leading-relaxed text-base italic font-serif">
-                Najdete jih v izbranih trgovinah in pri izbranih gostincih.
-              </p>
+
+              <div className="rounded-3xl border border-brand-gold/15 bg-white p-6 md:p-8 luxury-shadow">
+                <h3 className="font-display text-[10px] uppercase tracking-[0.25em] font-bold text-brand-gold mb-3">
+                  Kje so na voljo
+                </h3>
+                <p className="text-brand-stone leading-relaxed text-sm font-sans">
+                  Naše raviole lahko najdete v KZ Agraria, KZ Tolmin, PE Zajček, Celjskih mesninah, Mesninček Kozina, ter pri izbranih mesnicah in gostincih po Sloveniji.
+                </p>
+              </div>
+
+              <div className="rounded-3xl border border-brand-gold/25 bg-brand-cream p-6 md:p-8 luxury-shadow space-y-5">
+                <h3 className="font-serif text-xl md:text-2xl text-brand-wood leading-tight">
+                  Ste trgovina, mesnica ali gostinec?
+                </h3>
+                <p className="text-brand-stone leading-relaxed text-sm font-sans">
+                  Z veseljem sodelujemo z novimi partnerji, ki cenijo kakovostne domače izdelke. Če želite naše raviole vključiti v svojo ponudbo, nas kontaktirajte. Z veseljem vam predstavimo možnosti sodelovanja.
+                </p>
+                <a
+                  href="mailto:podslavnikom@gmail.com?subject=Povpra%C5%A1evanje%20za%20B2B%20sodelovanje"
+                  className="inline-flex items-center gap-2 bg-brand-wood text-brand-cream px-7 py-4 rounded-full text-[11px] font-bold uppercase tracking-widest font-display hover:bg-brand-gold hover:text-brand-wood transition-colors duration-300 shadow-lg"
+                >
+                  <Mail className="w-4 h-4 shrink-0" aria-hidden="true" />
+                  Povpraševanje za B2B sodelovanje
+                </a>
+              </div>
             </div>
           </motion.div>
 
@@ -137,44 +161,19 @@ export default function Restaurant() {
           <span className="block text-brand-gold/80 text-sm md:text-base font-serif italic tracking-wide">La Cena dell'Orso</span>
           <div className="w-16 h-[1px] bg-brand-gold mx-auto"></div>
           <p className="text-brand-cream/90 text-lg font-serif max-w-2xl mx-auto leading-relaxed">
-            Enkrat na leto, ko sezona to dovoli, prižgemo luči v kleti. Postavimo dolgo mizo. In za tiste, ki so pravočasno rezervirali, pripravljamo večerjo, ki je ni v nobenem restavracijskem vodniku.
+            Medved pri nas ni enkraten dogodek. Ponujamo ga skozi vse leto. Naša medvedja večerja je meni Medved v objemu gastronomije: golaž iz medveda za predjed, medvedja pečenka s prilogo za glavno jed in domača sladica.
           </p>
           <p className="text-brand-cream/75 text-sm max-w-xl mx-auto leading-relaxed font-sans">
-            Medvedina je meso, ki ga v Evropi zakonito postreže le peščica kuhinj. Je bogato, temno, z noto gozdnih tal. Vsak hod prinese drugačno pripravo. Vino iz naše kleti. Tišina, ki jo prekinejo le pogovori za mizo.
+            Medvedina je bogato, temno meso z izrazitim značajem in noto gozda. Ob koncih tedna jo imamo praviloma na voljo, vendar ne zagotovljeno, zato je rezervacija priporočljiva. File medveda ponujamo občasno kot samostojno jed.
           </p>
         </div>
       </section>
 
-      {/* B2B Ravioli Section */}
-      <section className="py-32 px-6 max-w-7xl mx-auto relative">
+      {/* Opening hours — full, owner-confirmed schedule */}
+      <section className="py-24 px-6 relative">
         <div className="absolute top-1/2 left-10 w-64 h-64 bg-brand-gold/5 blur-[80px] rounded-full pointer-events-none"></div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="rounded-[60px] overflow-hidden aspect-[4/3] md:aspect-[16/11] luxury-shadow group relative border border-brand-gold/10">
-            <img 
-              src="https://images.unsplash.com/photo-1587740908075-9e245070dfaa?w=1400&q=80" 
-              className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
-              alt="Naši ravioli pridejo tudi domov" 
-              referrerPolicy="no-referrer" loading="lazy" decoding="async"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-          </div>
-          <div className="space-y-8">
-            <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-bold block font-display">Ravioli — produkt</span>
-            <h2 className="text-3xl md:text-5xl font-serif text-brand-wood leading-tight">
-              Naši ravioli <br />
-              <span className="italic text-brand-gold font-serif">pridejo tudi domov.</span>
-            </h2>
-            <div className="w-12 h-[1px] bg-brand-gold"></div>
-            <p className="text-brand-stone leading-relaxed text-base font-sans">
-              Domači ravioli z divjačino, zeliščni, sezonski. Sveži ali zamrznjeni. Na voljo v gostišču in v izbranih trgovinah po Istri.
-            </p>
-            <div className="p-8 bg-brand-cream rounded-3xl border border-brand-gold/15 luxury-shadow">
-              <h4 className="font-bold text-brand-wood font-display text-xs uppercase tracking-widest mb-2">B2B Sodelovanje</h4>
-              <p className="text-brand-stone text-sm leading-relaxed font-sans">
-                Za B2B partnerje — restavracije, delikatese, gostilne — pripravljamo redne dobave. Pišite nam za pogoje in vzorce na naš kontaktni naslov.
-              </p>
-            </div>
-          </div>
+        <div className="max-w-3xl mx-auto relative z-10">
+          <OpeningHoursFull />
         </div>
       </section>
 
@@ -185,11 +184,11 @@ export default function Restaurant() {
           <span className="text-brand-gold text-[10px] uppercase tracking-[0.4em] font-bold block font-display">Rezervacija mize</span>
           <h2 className="text-4xl md:text-6xl font-serif text-brand-wood italic">Doživite pristne okuse.</h2>
           <p className="text-brand-stone text-lg leading-relaxed max-w-xl mx-auto font-serif font-light">
-            Svetujemo rezervacijo vsaj 2 dni vnaprej. Pokličite nas in si zagotovite svojo mizo v našem pristnem ambientu.
+            Ob sredah in četrtkih smo odprti ob predhodni rezervaciji. Pokličite nas in si zagotovite svojo mizo v našem pristnem ambientu.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center pt-6">
-            <a 
-              href="tel:+38641321379" 
+            <a
+              href="tel:+38641321379"
               className="px-10 py-5 bg-brand-wood text-white rounded-full font-bold uppercase tracking-[0.2em] text-[11px] hover:bg-brand-gold hover:text-brand-wood hover:scale-105 transition-all duration-500 font-display shadow-xl"
             >
               Pokličite: +386 41 321 379

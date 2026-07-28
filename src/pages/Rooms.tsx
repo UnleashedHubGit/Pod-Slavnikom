@@ -151,11 +151,11 @@ export default function Rooms() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
             <div className="lg:col-span-7 space-y-6">
               <h3 className="text-3xl md:text-4xl font-serif text-brand-cream">
-                Rezerviraj direktno — <br />
-                <span className="italic text-brand-gold">10% ceneje kot Booking.com.</span>
+                Rezervirajte <br />
+                <span className="italic text-brand-gold">neposredno pri nas.</span>
               </h3>
               <p className="text-brand-cream/80 text-sm max-w-xl">
-                Z neposrednim naročilom preko našega spletnega sistema Bentral si zagotovite najboljšo ceno in osebno prilagojene storitve gostišča Pod Slavnikom.
+                Z rezervacijo prek našega sistema Bentral se dogovorite neposredno z gostiščem Pod Slavnikom. Aktualne cene in razpoložljivost so prikazane v rezervacijskem sistemu, pogoji odpovedi in plačila pa ob rezervaciji.
               </p>
               <div className="flex items-center gap-2 pt-4 font-sans">
                 <BadgeInfo className="w-4 h-4 text-brand-gold-light" />

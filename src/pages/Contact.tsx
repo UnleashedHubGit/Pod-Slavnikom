@@ -1,6 +1,7 @@
 import { useSeo } from '../lib/seo';
 import { motion } from 'motion/react';
 import { Phone, Mail, MapPin, Instagram, Facebook, Send, Info } from 'lucide-react';
+import { OpeningHoursFull } from '../components/OpeningHours';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -37,7 +38,7 @@ export default function Contact() {
           <h1 className="text-6xl md:text-[90px] font-serif mb-12 max-w-5xl mx-auto leading-[0.85] tracking-tighter italic">Z veseljem vas <br /> pričakujemo.</h1>
           <div className="w-20 h-[1px] bg-brand-gold mx-auto mb-12"></div>
           <p className="text-brand-stone text-xl max-w-2xl mx-auto leading-relaxed font-serif">
-            Imate vprašanje o naši ponudbi ali želite rezervirati svoj termin? Izpolnite spodnji obrazec ali nas kontaktirajte prek spodnjih podatkov.
+            Imate vprašanje o naši ponudbi ali želite rezervirati svoj termin? Pokličite nas ali nam pišite na spodnje kontaktne podatke.
           </p>
         </div>
 
@@ -46,7 +47,11 @@ export default function Contact() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start relative z-10"
+          // A 12-track grid pays for 11 gutters: gap-24 needs 1056px of gutter
+          // alone, which exceeds the content box at 1024px and pushed the form
+          // panel out (masked by the section's overflow-hidden). Same retune
+          // already applied to the About and SPA intros.
+          className="grid grid-cols-1 lg:grid-cols-12 gap-24 lg:gap-12 xl:gap-24 items-start relative z-10"
         >
           {/* Contact Details - Editorial Columns */}
           <motion.div variants={cardVariants} className="lg:col-span-5 space-y-16">
@@ -62,6 +67,8 @@ export default function Contact() {
                 <p className="text-xs text-brand-stone/60 mt-4 font-light font-sans">Za povpraševanja in darilne bone.</p>
               </div>
             </div>
+
+            <OpeningHoursFull />
 
             <div className="bg-brand-wood text-brand-cream p-16 rounded-[60px] luxury-shadow relative overflow-hidden group border border-brand-gold/15">
                <div className="absolute inset-0 opacity-[0.05] pointer-events-none grain-texture"></div>
@@ -164,9 +171,19 @@ export default function Contact() {
                   Spletno pošiljanje sporočil bo omogočeno v končni različici spletne strani. Do takrat vas prosimo, da nas za rezervacije in povpraševanja pokličete na <a href="tel:+38641321379" className="text-brand-gold font-semibold hover:underline">+386 41 321 379</a> ali pišete na <a href="mailto:podslavnikom@gmail.com" className="text-brand-gold font-semibold hover:underline">podslavnikom@gmail.com</a>.
                 </p>
               </div>
-              <button type="submit" aria-disabled="true" title="Spletno pošiljanje bo omogočeno v končni različici" className="w-full bg-brand-wood text-white px-12 py-8 rounded-full text-xs uppercase tracking-[0.5em] font-black font-display hover:bg-brand-gold hover:text-brand-wood hover:scale-[1.02] transition-all duration-500 luxury-shadow flex items-center justify-center gap-6 group">
-                Pošljite sporočilo <Send className="w-5 h-5 transition-transform group-hover:translate-x-2 group-hover:-translate-y-2" aria-hidden="true" />
-              </button>
+              <div className="space-y-4">
+                <button
+                  type="submit"
+                  disabled
+                  title="Spletno pošiljanje bo omogočeno v končni različici"
+                  className="w-full bg-brand-stone/25 text-brand-wood/50 px-12 py-8 rounded-full text-xs uppercase tracking-[0.5em] font-black font-display cursor-not-allowed flex items-center justify-center gap-6 border border-brand-wood/10"
+                >
+                  Pošljite sporočilo <Send className="w-5 h-5" aria-hidden="true" />
+                </button>
+                <p className="text-center text-[10px] uppercase tracking-[0.3em] font-bold text-brand-stone/60 font-display">
+                  Pošiljanje še ni na voljo
+                </p>
+              </div>
             </form>
           </motion.div>
         </motion.div>
@@ -182,8 +199,8 @@ export default function Contact() {
           </div>
           <div className="space-y-6">
             {[
-              { q: 'Ali sprejemate večje skupine?', a: 'Da, naša gostilna lahko v notranjosti sprejme do 60 oseb, na terasi pa še dodatnih 40. Za skupine nad 10 oseb prosimo za predhodno rezervacijo in dogovor o meniju.' },
-              { q: 'Ali se lahko prijavim v prenočišče kasneje?', a: 'Uradna prijava je možna med 14:00 in 20:00. V kolikor nameravate prispeti kasneje, nas prosim o tem vnaprej obvestite, da vam pripravimo dostop.' },
+              { q: 'Ali sprejemate večje skupine?', a: 'Da. Velika sala sprejme do 60 oseb, kamnita klet pa je zasebni prostor za do 20 oseb. Za skupine prosimo za predhodno rezervacijo in dogovor o meniju. Skupinski meniji se začnejo pri 25 € na osebo.' },
+              { q: 'Do kdaj je možen prihod v prenočišče?', a: 'Prihod je možen do 22.00. Če boste prispeli pozneje, nas prosimo o tem vnaprej obvestite, da se dogovorimo o prihodu.' },
               { q: 'Ali so hišni ljubljenčki dobrodošli?', a: 'V restavraciji so vaši zvesti prijatelji dobrodošli. Glede psov v nastanitvenih objektih pa se prosimo predhodno posvetujte z nami (na voljo so določena prenočišča).' }
             ].map((faq, idx) => (
               <details key={idx} className="group bg-white rounded-[40px] p-8 md:p-12 border border-brand-wood/5 transition-all duration-500 luxury-shadow open:bg-white select-none">

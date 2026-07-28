@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react';
+import { OpeningHoursCompact, GUEST_DINNER_NOTE } from './OpeningHours';
 
 export default function Footer() {
   return (
@@ -70,18 +71,12 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="font-display text-[10px] uppercase tracking-[0.4em] font-bold text-brand-gold mb-8">Urnik</h4>
-          <ul className="space-y-4 text-sm text-brand-cream/70 font-light font-sans">
-            <li className="flex justify-between border-b border-brand-cream/10 pb-2">
-              <span className="text-brand-cream/80">Sreda – Nedelja</span>
-              <span className="text-brand-cream font-medium">12:00 – 22:00</span>
-            </li>
-            <li className="flex justify-between items-center">
-              <span className="text-brand-cream/60">Ponedeljek, Torek</span>
-              <span className="text-brand-gold/90 font-semibold tracking-wide text-xs">ZAPRTO</span>
-            </li>
-          </ul>
-          <div className="mt-8 p-4 rounded-2xl bg-white/5 border border-white/10 font-sans">
+          <h4 className="font-display text-[10px] uppercase tracking-[0.4em] font-bold text-brand-gold mb-8">Urnik gostilne</h4>
+          <OpeningHoursCompact />
+          <div className="mt-8 p-4 rounded-2xl bg-white/5 border border-white/10 font-sans space-y-3">
+            <p className="text-xs leading-relaxed text-brand-cream/70">
+              {GUEST_DINNER_NOTE}
+            </p>
             <p className="text-xs leading-relaxed text-brand-cream/70">
               Nastanitve in SPA so na voljo 7 dni v tednu po predhodnem dogovoru.
             </p>

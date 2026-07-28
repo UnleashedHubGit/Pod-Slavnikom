@@ -1,12 +1,54 @@
 # Project Status — Pod Slavnikom Website
 
-**Status:** Parked
+**Status:** Active — owner review
 
-**Current phase:** React prototype/staging polish complete, awaiting explicit
-review and release decision.
+**Current phase:** Owner-confirmed content and responsive revision completed on
+the preview branch. Awaiting Kevin and Igor review on the Netlify preview.
+
+**Current branch:** `preview`
 
 **Last verified completed milestone:** Finishing-stage preview work through
 `preview @ 78afac8`.
+
+## Completed in this revision
+
+- Owner-confirmed restaurant introduction.
+- Consolidated ravioli section and B2B enquiry.
+- Groups and buses content.
+- Updated Medvedja večerja content.
+- Removal of public room-price and Booking.com discount guarantees.
+- Check-in updated to 22.00.
+- Package content and confirmed prices.
+- SPA time windows and pricing.
+- Detailed restaurant opening hours.
+- Responsive fixes across About, Home, Contact, SPA, Packages, Restaurant, and
+  Surroundings.
+- Local lint, build, interactive verification, and screenshot QA completed.
+
+**Current stop point:** Implementation and local QA complete. Ready for a
+preview checkpoint commit and Netlify branch deploy. No merge to `main`
+approved.
+
+**Next action:** Push the preview checkpoint and send the Netlify preview URL
+to Kevin and Igor for review.
+
+## Deferred work
+
+- Owner menu and wine-list PDFs.
+- Degustation-menu scans.
+- Owner ravioli and plated-food photographs.
+- Manual room-photo mapping.
+- Replacement of remaining stock room and ravioli images.
+- Vikend Relax price.
+- Vikend & SPA price.
+- Decision whether La Cena dell'Orso remains on the Slovenian page.
+- Confirmation whether the supplied screenshots were content-only or also a
+  design request.
+- SPA maximum capacity.
+- SPA age rules.
+- Final approved cancellation wording.
+
+## Prior parked-state record (superseded by the revision above)
 
 **Branch state:** `preview` is 5 commits ahead of `origin/main`, 0 behind.
 Merge base is `origin/main`'s current HEAD, so this is a clean fast-forward

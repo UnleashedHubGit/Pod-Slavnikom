@@ -221,8 +221,8 @@ export default function RoomDetail() {
                 <div className="space-y-1">
                   <h4 className="text-xs font-bold text-brand-gold uppercase tracking-wider font-display">Informacije o prihodu in odpovedi</h4>
                   <p className="text-xs text-brand-cream/70 leading-relaxed">
-                    Prihod: 14:00 – 21:00. Odhod: do 10:00. <br />
-                    Brezplačna odpoved rezervacije je možna do 24 ur pred prihodom.
+                    Prihod do 22.00. Odhod do 10.00. <br />
+                    Pogoji odpovedi in plačila so prikazani ob rezervaciji.
                   </p>
                 </div>
               </div>
@@ -239,9 +239,9 @@ export default function RoomDetail() {
                   <Info className="w-5 h-5" />
                 </div>
                 <div className="space-y-1">
-                  <h3 className="font-serif text-base text-brand-gold-light italic">Direktna rezervacija s popustom</h3>
+                  <h3 className="font-serif text-base text-brand-gold-light italic">Direktna rezervacija</h3>
                   <p className="text-xs text-brand-cream/70 leading-relaxed font-sans">
-                    Z rezervacijo preko spodnjega direktnega sistema Bentral prejmete <strong>10% popust</strong> ter najboljše pogoje odpovedi.
+                    Spodaj rezervirate neposredno pri nas prek sistema Bentral. Aktualne cene so prikazane v uradnem ceniku, pogoji odpovedi in plačila pa ob rezervaciji.
                   </p>
                 </div>
               </div>
