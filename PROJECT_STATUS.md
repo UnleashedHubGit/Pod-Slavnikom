@@ -2,8 +2,8 @@
 
 **Status:** Active — owner review
 
-**Current phase:** Owner-confirmed content and responsive revision completed on
-the preview branch. Awaiting Kevin and Igor review on the Netlify preview.
+**Current phase:** Second owner-confirmed follow-up implemented on preview.
+Awaiting review on the Netlify branch deployment.
 
 **Current branch:** `preview`
 
@@ -12,40 +12,42 @@ the preview branch. Awaiting Kevin and Igor review on the Netlify preview.
 
 ## Completed in this revision
 
-- Owner-confirmed restaurant introduction.
-- Consolidated ravioli section and B2B enquiry.
-- Groups and buses content.
-- Updated Medvedja večerja content.
-- Removal of public room-price and Booking.com discount guarantees.
-- Check-in updated to 22.00.
-- Package content and confirmed prices.
-- SPA time windows and pricing.
-- Detailed restaurant opening hours.
-- Responsive fixes across About, Home, Contact, SPA, Packages, Restaurant, and
-  Surroundings.
-- Local lint, build, interactive verification, and screenshot QA completed.
+- Removed La Cena dell'Orso from visible Slovenian content.
+- Changed the visible attic accommodation name from Podstrešna suite to
+  Studio.
+- Preserved the existing room slug and Bentral mapping.
+- Confirmed rooms 1 to 4 remain one shared double-room presentation.
+- Positioned the private SPA for 2 people and 18+.
+- Added availability for larger groups on all days by prior arrangement.
+- Added a separate Darilni boni section with values 20 €, 50 €, and 100 €.
+- Added confirmed voucher validity and redemption rules.
+- Lint, build, responsive verification, and interactive checks completed.
 
-**Current stop point:** Implementation and local QA complete. Ready for a
-preview checkpoint commit and Netlify branch deploy. No merge to `main`
-approved.
+**Current stop point:** Implementation and local verification complete.
+Ready for checkpoint commit and automatic Netlify preview deployment. No
+merge to `main` approved.
 
-**Next action:** Push the preview checkpoint and send the Netlify preview URL
-to Kevin and Igor for review.
+**Next action:** Push the preview checkpoint, review it on Netlify, and
+collect any remaining owner feedback.
 
 ## Deferred work
 
-- Owner menu and wine-list PDFs.
-- Degustation-menu scans.
-- Owner ravioli and plated-food photographs.
+- Final À la carte PDF.
+- Final wine-list PDF.
+- Degustation menus.
+- Final prices for Vikend Relax and Vikend & SPA.
+- Owner and TIC photographs.
+- Ravioli and plated-food photographs.
 - Manual room-photo mapping.
-- Replacement of remaining stock room and ravioli images.
-- Vikend Relax price.
-- Vikend & SPA price.
-- Decision whether La Cena dell'Orso remains on the Slovenian page.
+- Replacement of remaining stock images.
+- Activation of info@podslavnikom.si.
+- Activation of racuni@podslavnikom.si.
+- SPA booking-module decision.
+- WooCommerce and payment implementation.
+- Legal-page implementation and final legal review.
+- Updating legal voucher wording to include 20 €, 50 €, and 100 €.
 - Confirmation whether the supplied screenshots were content-only or also a
   design request.
-- SPA maximum capacity.
-- SPA age rules.
 - Final approved cancellation wording.
 
 ## Prior parked-state record (superseded by the revision above)

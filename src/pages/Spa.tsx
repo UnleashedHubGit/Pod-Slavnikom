@@ -1,6 +1,6 @@
 import { useSeo } from '../lib/seo';
 import { motion } from 'motion/react';
-import { Sparkles, Heart } from 'lucide-react';
+import { Sparkles, Heart, Info } from 'lucide-react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -75,10 +75,10 @@ export default function Spa() {
             </h1>
             <div className="w-16 h-[1px] bg-brand-gold"></div>
             <p className="text-brand-stone text-lg leading-relaxed font-serif max-w-md font-light">
-              Naš wellness ni javni bazen s tujci. Je zasebni prostor, rezerviran izključno za vas — vašo skupino, vaš par, vašo družino. Ko vstopite, se vrata zaprejo za vami.
+              Naš wellness ni javni bazen s tujci. Je zasebni prostor, zasnovan za 2 osebi in rezerviran izključno za vaju. Ko vstopite, se vrata zaprejo za vama.
             </p>
             <div className="p-6 bg-brand-cream border-l-2 border-brand-gold text-brand-gold-dim font-serif italic rounded-r-3xl luxury-shadow">
-              Ekskluzivni zasebni najem, samo za vašo družbo. Trije termini dnevno, 2 ali 3 ure.
+              Ekskluzivni zasebni najem za 2 osebi. Trije termini dnevno, 2 ali 3 ure.
             </div>
           </div>
 
@@ -166,6 +166,13 @@ export default function Spa() {
           <p className="text-brand-stone text-sm md:text-base font-sans mt-6 max-w-xl mx-auto leading-relaxed">
             Wellness lahko rezervirate za 2 ali 3 ure. Cena je odvisna od termina, ki ga izberete.
           </p>
+          <div className="mt-8 max-w-xl mx-auto flex items-start gap-3 rounded-2xl border border-dashed border-brand-gold/40 bg-brand-cream-soft/70 px-6 py-5 text-left">
+            <Info className="w-4 h-4 text-brand-gold shrink-0 mt-1" aria-hidden="true" />
+            <div className="space-y-2 text-xs md:text-sm text-brand-stone leading-relaxed font-sans">
+              <p>Zasebni SPA je zasnovan za 2 osebi.</p>
+              <p>Uporaba zasebnega SPA-ja je namenjena osebam, starim 18 let ali več.</p>
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative z-10">

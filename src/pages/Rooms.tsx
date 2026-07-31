@@ -24,11 +24,11 @@ const roomList = [
   },
   {
     slug: 'podstresna-suite',
-    name: 'Podstrešna suite s prosto stoječo kadjo',
+    name: 'Studio s prosto stoječo kadjo',
     image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=900&q=80',
     tag: 'Ekskluzivno',
-    meta: '2 osebi · Suite',
-    desc: 'Čudovita in romantična podstrešna suite, katere osrednji del je prosto stoječa kad za vrhunsko sprostitev. Popolno gnezdo za nepozabne trenutke.',
+    meta: '2 osebi · Studio',
+    desc: 'Čudovit in romantičen studio, katerega osrednji del je prosto stoječa kad za vrhunsko sprostitev. Popolno gnezdo za nepozabne trenutke.',
     amenities: ['📶 WiFi', '🛁 Prosto stoječa kad', '🌿 Balkon', '❄️ Klima']
   }
 ];
@@ -51,7 +51,7 @@ const cardVariants = {
 export default function Rooms() {
   useSeo(
     'Sobe & prenočišča | Pod Slavnikom',
-    'Udobne sobe in podstrešna suite ob vznožju Slavnika v Podgorju. Preverite razpoložljivost in rezervirajte neposredno prek sistema Bentral.',
+    'Udobne sobe in studio ob vznožju Slavnika v Podgorju. Preverite razpoložljivost in rezervirajte neposredno prek sistema Bentral.',
   );
   return (
     <motion.div

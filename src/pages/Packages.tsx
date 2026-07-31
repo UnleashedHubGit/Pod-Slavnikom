@@ -1,6 +1,6 @@
 import { useSeo } from '../lib/seo';
 import { motion } from 'motion/react';
-import { Check, Info } from 'lucide-react';
+import { Check, Info, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 /**
@@ -51,7 +51,7 @@ const packageList = [
   },
   {
     name: 'Medvedja večerja',
-    secondaryName: 'La Cena dell’Orso',
+    secondaryName: null,
     image: '/images/client/restaurant/restaurant-interior-01.jpg',
     tagline: 'Edinstven kulinarični ritual.',
     sub: null,
@@ -66,6 +66,19 @@ const packageList = [
 
 const TOURIST_TAX_NOTE =
   'Turistična taksa ni vključena in se obračuna posebej v višini 2,50 € na osebo na noč.';
+
+/** Owner-confirmed gift-voucher amounts and rules, kept separate from the four experience packages. */
+const VOUCHER_AMOUNTS = ['20 €', '50 €', '100 €'];
+
+const VOUCHER_RULES = [
+  'Veljavnost bona je 12 mesecev od dneva nakupa.',
+  'Bon je treba izkoristiti v enem koriščenju in ga ni mogoče koristiti po delih.',
+  'Če je vrednost izbrane storitve višja od vrednosti bona, je mogoče doplačilo razlike.',
+  'Neizkoriščeni del vrednosti se ne vrača in se ne izplača v gotovini.',
+];
+
+const VOUCHER_MAIL_HREF =
+  'mailto:podslavnikom@gmail.com?subject=Povpra%C5%A1evanje%20za%20darilni%20bon';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -191,6 +204,59 @@ export default function Packages() {
           <Info className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" aria-hidden="true" />
           <span>{TOURIST_TAX_NOTE}</span>
         </p>
+      </section>
+
+      {/* Gift Vouchers — separate section, distinct from the four experience packages */}
+      <section className="py-16 px-6 max-w-7xl mx-auto">
+        <div className="bg-brand-wood text-brand-cream p-12 md:p-16 rounded-[60px] relative overflow-hidden border border-brand-gold/20 luxury-shadow">
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-brand-gold/5 blur-[80px] rounded-full pointer-events-none"></div>
+          <div className="relative z-10 space-y-12">
+            <div className="max-w-2xl space-y-6">
+              <span className="text-brand-gold uppercase tracking-[0.4em] text-[10px] font-bold block font-display">Darilni boni</span>
+              <h2 className="text-3xl md:text-5xl font-serif text-brand-cream leading-tight">
+                Podarite <span className="italic text-brand-gold">doživetje</span> Pod Slavnikom.
+              </h2>
+              <p className="text-brand-cream/80 text-sm md:text-base leading-relaxed max-w-xl">
+                Izberite vrednostni darilni bon v vrednosti 20 €, 50 € ali 100 €.
+              </p>
+            </div>
+
+            {/* Voucher amounts */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {VOUCHER_AMOUNTS.map((amount) => (
+                <div key={amount} className="text-center bg-brand-wood-deep/50 border border-brand-gold/20 rounded-[32px] py-8">
+                  <span className="font-serif text-4xl md:text-5xl text-brand-gold font-black block">{amount}</span>
+                  <span className="text-[10px] uppercase tracking-widest text-brand-cream/50 font-display mt-2 block">Vrednostni bon</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Confirmed voucher rules */}
+            <ul className="space-y-4 max-w-2xl">
+              {VOUCHER_RULES.map((rule) => (
+                <li key={rule} className="flex items-start gap-3 text-sm text-brand-cream/70 leading-relaxed">
+                  <Check className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" aria-hidden="true" />
+                  <span>{rule}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Online purchase note + enquiry CTA */}
+            <div className="pt-4 border-t border-brand-gold/15 space-y-6">
+              <p className="flex items-start gap-3 text-xs text-brand-cream/60 leading-relaxed max-w-2xl">
+                <Info className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" aria-hidden="true" />
+                <span>Spletni nakup darilnega bona bo omogočen v končni različici spletne strani. Do takrat vas prosimo za povpraševanje po e-pošti.</span>
+              </p>
+              <a
+                href={VOUCHER_MAIL_HREF}
+                className="inline-flex items-center gap-2 bg-brand-gold text-brand-wood px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest font-display hover:bg-brand-gold-light transition-colors"
+              >
+                <Mail className="w-4 h-4 shrink-0" aria-hidden="true" />
+                Povpraševanje za darilni bon
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
     </motion.div>
   );

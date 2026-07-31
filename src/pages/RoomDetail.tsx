@@ -29,12 +29,12 @@ const roomDetails = {
     bentralPriceListUrl: 'https://www.bentral.com/service/embed/price-list.js?uid=5f44597a4d675f4f&id=5f7a55794d515f4d&poweredby=0&lang=sl&key=5198bd0c408529a8fedb74d2925208ab'
   },
   'podstresna-suite': {
-    name: 'Podstrešna suite s prosto stoječo kadjo',
+    name: 'Studio s prosto stoječo kadjo',
     image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&q=80',
     tag: 'Ekskluzivno',
-    meta: '2 osebi · Suite',
-    desc: 'Čudovita in romantična podstrešna suite, katere osrednji del je prosto stoječa kad za vrhunsko sprostitev v dvoje. Popolno gnezdo za nepozabne trenutke.',
-    longDesc: 'Najprestižnejša nastanitev v našem gostišču je zasnovana z mislijo na popolno romantiko in estetiko. Prostorna podstrešna suite z visokimi stropi ponuja izjemno prostornost ter intimnost. Prosto stoječa kad neposredno v sobi ponuja kraljevsko sprostitev ob soju sveč po dolgem dnevu v naravi ali wellnessu.',
+    meta: '2 osebi · Studio',
+    desc: 'Čudovit in romantičen studio, katerega osrednji del je prosto stoječa kad za vrhunsko sprostitev v dvoje. Popolno gnezdo za nepozabne trenutke.',
+    longDesc: 'Najprestižnejša nastanitev v našem gostišču je zasnovana z mislijo na popolno romantiko in estetiko. Prostoren studio z visokimi stropi ponuja izjemno prostornost ter intimnost. Prosto stoječa kad neposredno v sobi ponuja kraljevsko sprostitev ob soju sveč po dolgem dnevu v naravi ali wellnessu.',
     amenities: ['📶 Brezplačen WiFi', '🛁 Prosto stoječa kad v sobi', '🌿 Balkon obrnjen proti vrtu', '❄️ Klima', '📺 Velik TV sprejemnik', '🧴 Premium kozmetika', '☕ Kavni kotiček', '🥋 Kopalni plašči'],
     bentralBookingUrl: 'https://www.bentral.com/service/embed/booking.js?id=5f7a55794d515f4d&unit=5f5459334f54494d&title=0&width=full&poweredby=0&lang=sl&key=5198bd0c408529a8fedb74d2925208ab',
     bentralCalendarUrl: 'https://www.bentral.com/service/embed/calendar.js?uid=5f5459334f54494d&last=true&poweredby=0&lang=sl&key=5198bd0c408529a8fedb74d2925208ab',

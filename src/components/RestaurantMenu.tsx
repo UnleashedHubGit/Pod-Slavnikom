@@ -79,6 +79,7 @@ const TABS: MenuTab[] = [
     body: [
       'Divjačina je naša osnova, ni pa naša edina zgodba. Za skupine pripravimo tudi telečje pečenke, krače in druge vrste mesa. Povejte nam, kaj si želite, in sestavimo meni po vaši meri.',
       'Skupinski meniji se začnejo pri 25 € na osebo.',
+      'Za večje skupine smo po predhodnem dogovoru na voljo vse dni v tednu.',
       'Povejte nam datum in število oseb, pripravimo predlog menija.',
     ],
     stats: [

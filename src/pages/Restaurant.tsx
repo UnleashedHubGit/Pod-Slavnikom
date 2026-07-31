@@ -22,7 +22,7 @@ const cardVariants = {
 export default function Restaurant() {
   useSeo(
     'Gostilna & kulinarika | Pod Slavnikom',
-    'Divjačina iz slovenskih gozdov, ročno izdelani ravioli in degustacijski meniji. Medvedja večerja (La Cena dell’Orso) v kamniti kleti gostišča Pod Slavnikom.',
+    'Divjačina iz slovenskih gozdov, ročno izdelani ravioli in degustacijski meniji. Medvedja večerja v kamniti kleti gostišča Pod Slavnikom.',
   );
   return (
     <motion.div
@@ -158,7 +158,6 @@ export default function Restaurant() {
           <h2 className="text-4xl md:text-6xl font-serif text-brand-cream leading-tight">
             Medvedja večerja
           </h2>
-          <span className="block text-brand-gold/80 text-sm md:text-base font-serif italic tracking-wide">La Cena dell'Orso</span>
           <div className="w-16 h-[1px] bg-brand-gold mx-auto"></div>
           <p className="text-brand-cream/90 text-lg font-serif max-w-2xl mx-auto leading-relaxed">
             Medved pri nas ni enkraten dogodek. Ponujamo ga skozi vse leto. Naša medvedja večerja je meni Medved v objemu gastronomije: golaž iz medveda za predjed, medvedja pečenka s prilogo za glavno jed in domača sladica.
