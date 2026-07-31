@@ -7,7 +7,7 @@ const roomList = [
   {
     slug: 'enoposteljna-soba-5',
     name: 'Enoposteljna soba 5 (1+0)',
-    image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=80',
+    image: '/images/client/rooms/single-room-hero-temporary.jpg',
     tag: 'Enoposteljna',
     meta: '1 oseba · 1+0',
     desc: 'Udobna in mirna enoposteljna soba (Soba 5), opremljena z naravnimi materiali. Popolna izbira za samostojne popotnike in hribolazce.',
@@ -16,7 +16,7 @@ const roomList = [
   {
     slug: 'dvoposteljna-soba',
     name: 'Dvoposteljna soba 1, 2, 3, 4 (2+0)',
-    image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=900&q=80',
+    image: '/images/client/rooms/double-room-hero.jpg',
     tag: 'Dvoposteljna',
     meta: '2 osebi · 2+0',
     desc: 'Prijetne dvoposteljne sobe (Sobe 1, 2, 3, 4) s toplim lesenim pohištvom. Ponujajo vso potrebno udobje za sproščen oddih pod Slavnikom.',
@@ -25,7 +25,7 @@ const roomList = [
   {
     slug: 'podstresna-suite',
     name: 'Studio s prosto stoječo kadjo',
-    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=900&q=80',
+    image: '/images/client/rooms/studio-hero.jpg',
     tag: 'Ekskluzivno',
     meta: '2 osebi · Studio',
     desc: 'Čudovit in romantičen studio, katerega osrednji del je prosto stoječa kad za vrhunsko sprostitev. Popolno gnezdo za nepozabne trenutke.',
