@@ -55,7 +55,7 @@ export default function About() {
           <div className="lg:col-span-7 relative group">
              <div className="rounded-[80px] overflow-hidden aspect-[4/3] md:aspect-[16/11] luxury-shadow relative border border-brand-gold/10">
                 <img 
-                  src="/images/client/restaurant/restaurant-interior-01.jpg"
+                  src="/images/client/restaurant/restaurant-interior-01-1600w.webp"
                   className="w-full h-full object-cover transition-transform duration-[8s] group-hover:scale-105" 
                   alt="Notranjost gostišča" 
                   referrerPolicy="no-referrer" loading="lazy" decoding="async"

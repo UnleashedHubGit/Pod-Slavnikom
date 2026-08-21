@@ -4,62 +4,70 @@ import { Check, Info, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 /**
- * Owner-confirmed packages. Prices marked "Na povpraševanje" are the ones the
- * owner has not yet confirmed — no older, unverified price is carried over.
+ * Owner-confirmed packages: names, prices and inclusions are exactly as
+ * confirmed and must not be edited without a new confirmation.
+ *
+ * Note the naming split, which is deliberate and easy to get wrong:
+ * "Medvedova noč" is the accommodation package defined here, while
+ * "Medvedja večerja" stays the restaurant specialty on /restavracija.
  */
 const packageList = [
   {
     name: 'Vikend Relax',
     secondaryName: null,
-    image: '/images/client/wellness/wellness-private-spa-01.jpg',
+    image: '/images/client/wellness/wellness-private-spa-01-1600w.webp',
     tagline: 'Telo se ustavi prej, kot misli.',
     sub: 'Dva dni brez ur',
-    price: 'Na povpraševanje',
-    priceLabel: '2 noči',
+    price: '350 €',
+    priceLabel: '2 noči · 2 osebi',
     features: [
-      '2 noči v izbrani sobi z zajtrkom',
-      '1 × večerja: meni Gozdna pojedina za 2 osebi',
-      '1 × najem zasebnega wellnessa za 3 ure'
+      '2 × nočitev z zajtrkom za 2 osebi',
+      '1 × večerja: Gozdna pojedina za 2 osebi',
+      '1 × zasebni najem SPA – 3 ure',
+      'Kopalni plašč, penina, sadje in voda'
     ]
   },
   {
     name: 'Vikend & SPA',
     secondaryName: null,
-    image: '/images/client/wellness/wellness-sauna-01.jpg',
+    image: '/images/client/rooms/studio-hero-1600w.webp',
     tagline: 'Vikend, ki diši po gozdu in pari.',
     sub: 'Smreka in para',
-    price: 'Na povpraševanje',
-    priceLabel: '2 noči',
+    price: '280 €',
+    priceLabel: '2 noči · 2 osebi',
     features: [
-      '2 noči v izbrani sobi z zajtrkom',
-      '1 × najem zasebnega wellnessa za 3 ure',
+      '2 × nočitev z zajtrkom v studiu s samostoječo kadjo',
+      'Zasebni najem SPA – 3 ure',
+      'Kopalni plašč, penina, sadje in voda',
       'Mir, rezerviran samo za vaju'
     ]
   },
   {
     name: 'Divja eleganca',
     secondaryName: null,
-    image: '/images/client/restaurant/restaurant-food-03.jpg',
+    image: '/images/client/restaurant/restaurant-food-03-1600w.webp',
     tagline: 'Ena noč in divjačina, kakršne drugje ne najdeš.',
     sub: null,
-    price: '180 €',
-    priceLabel: '1 noč',
+    price: '200 €',
+    priceLabel: '1 noč · 2 osebi',
     features: [
-      '1 noč v izbrani sobi z zajtrkom',
-      '1 × večerja: meni Divja eleganca za 2 osebi'
+      '1 × nočitev z zajtrkom za 2 osebi',
+      'Večerja Divja eleganca za 2 osebi'
     ]
   },
   {
-    name: 'Medvedja večerja',
+    name: 'Medvedova noč',
     secondaryName: null,
-    image: '/images/client/restaurant/restaurant-interior-01.jpg',
-    tagline: 'Edinstven kulinarični ritual.',
+    image: '/images/client/restaurant/restaurant-interior-01-1600w.webp',
+    tagline: 'Medvedja večerja, savna in noč v hiši.',
     sub: null,
-    price: '190 €',
-    priceLabel: '1 noč',
+    price: '260 €',
+    priceLabel: '1 noč · 2 osebi',
     features: [
-      '1 noč v izbrani sobi z zajtrkom',
-      '1 × večerja: Medved v objemu gastronomije za 2 osebi'
+      '1 × nočitev z zajtrkom za 2 osebi',
+      'Medvedova večerja za 2 osebi',
+      'Zasebni najem SPA – 2 uri',
+      'Kopalni plašč, čaj in sadje'
     ]
   }
 ];
@@ -98,7 +106,7 @@ const cardVariants = {
 export default function Packages() {
   useSeo(
     'Paketi & doživetja | Pod Slavnikom',
-    'Doživljajski paketi z nastanitvijo, wellnessom in kulinariko — Vikend Relax, Vikend & SPA, Divja eleganca in Medvedja večerja.',
+    'Doživljajski paketi z nastanitvijo, wellnessom in kulinariko — Vikend Relax, Vikend & SPA, Divja eleganca in Medvedova noč.',
   );
   return (
     <motion.div

@@ -4,6 +4,7 @@ import { lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import WhatsAppButton from './components/WhatsAppButton';
 
 // Route-level code splitting: each page ships as its own chunk so the initial
 // load only pulls the shell (Navbar/Footer) plus the current route.
@@ -59,6 +60,7 @@ export default function App() {
           </Suspense>
         </main>
         <Footer />
+        <WhatsAppButton />
       </div>
     </Router>
   );
