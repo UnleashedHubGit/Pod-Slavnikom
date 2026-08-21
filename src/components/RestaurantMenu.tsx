@@ -290,8 +290,11 @@ export default function RestaurantMenu() {
                   <p className="text-[10px] uppercase tracking-[0.25em] font-bold text-brand-gold/80 font-display mb-3">
                     {current.pendingFor}
                   </p>
-                  <p className="text-brand-stone font-serif italic text-lg leading-relaxed">
-                    Dokument je v pripravi in bo objavljen, ko bo na voljo.
+                  <p className="text-brand-wood font-serif italic text-2xl md:text-3xl leading-tight mb-3">
+                    Kmalu na voljo.
+                  </p>
+                  <p className="text-brand-stone text-sm font-sans leading-relaxed">
+                    Dokument pripravljamo in ga objavimo, takoj ko bo na voljo.
                   </p>
                 </div>
               )}

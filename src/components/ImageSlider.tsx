@@ -12,6 +12,8 @@ interface ImageSliderProps {
   images: SliderImage[];
   aspectClassName?: string;
   roundedClassName?: string;
+  /** Extra classes for the outer wrapper, e.g. a page-specific border. */
+  className?: string;
   priority?: boolean;
   autoPlayMs?: number;
   label: string;
@@ -26,6 +28,7 @@ export default function ImageSlider({
   images,
   aspectClassName = 'aspect-[4/5]',
   roundedClassName = 'rounded-[80px]',
+  className = '',
   priority = false,
   autoPlayMs = 6000,
   label,
@@ -51,7 +54,7 @@ export default function ImageSlider({
 
   return (
     <div
-      className={`relative overflow-hidden ${roundedClassName} luxury-shadow group`}
+      className={`relative overflow-hidden ${roundedClassName} luxury-shadow group ${className}`}
       role="region"
       aria-roledescription="carousel"
       aria-label={label}
