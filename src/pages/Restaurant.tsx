@@ -139,7 +139,7 @@ export default function Restaurant() {
       <RestaurantMenu />
 
       {/* Signature Event: Medvedja večerja */}
-      <section className="relative py-24 md:py-28 px-6 bg-brand-bark-deep text-brand-cream overflow-hidden">
+      <section id="medvedja-vecerja" className="relative py-24 md:py-28 px-6 bg-brand-bark-deep text-brand-cream overflow-hidden scroll-mt-24">
         <div className="absolute inset-0 opacity-20 mix-blend-overlay">
           <img 
             src="/images/client/restaurant/restaurant-interior-01.jpg"

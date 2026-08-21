@@ -1,8 +1,42 @@
 import { useSeo } from '../lib/seo';
 import { motion } from 'motion/react';
-import { useRef } from 'react';
-import { UtensilsCrossed, Bed, Sparkles, ArrowRight, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { UtensilsCrossed, Bed, Sparkles, PawPrint, ArrowRight, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ImageSlider from '../components/ImageSlider';
+
+const RESTAVRACIJA_SLIDES = [
+  { src: '/images/client/additional/restaurant-01-1600w.webp', alt: 'Gostilniška soba Pod Slavnikom' },
+  { src: '/images/client/restaurant/restaurant-food-02-1600w.webp', alt: 'Divjačinska jed Pod Slavnikom' },
+  { src: '/images/client/restaurant/restaurant-food-03-1600w.webp', alt: 'Jed iz divjačine z brusnicami' },
+  { src: '/images/client/restaurant/restaurant-interior-01-1600w.webp', alt: 'Gostilniška dvorana Pod Slavnikom' },
+  { src: '/images/client/additional/restaurant-02-1600w.webp', alt: 'Ambient gostilne Pod Slavnikom' },
+];
+
+const PRENOCISCA_SLIDES = [
+  { src: '/images/client/rooms/double-room-hero-1600w.webp', alt: 'Dvoposteljna soba Pod Slavnikom' },
+  { src: '/images/client/rooms/single-room-hero-temporary-1600w.webp', alt: 'Enoposteljna soba Pod Slavnikom' },
+  { src: '/images/client/rooms/studio-hero-1600w.webp', alt: 'Studio s prosto stoječo kadjo' },
+];
+
+const SPA_SLIDES = [
+  { src: '/images/client/wellness/wellness-private-spa-01-1600w.webp', alt: 'Zasebni SPA z jacuzzijem in ležalniki' },
+  { src: '/images/client/wellness/wellness-sauna-01-1600w.webp', alt: 'Finska savna Pod Slavnikom' },
+  { src: '/images/client/wellness/wellness-steam-cabin-01-1600w.webp', alt: 'Parna kopel Pod Slavnikom' },
+];
+
+const REVIEWS = [
+  { name: 'Jana', type: 'Soba', stay: '1 noč', client: 'Par', date: 'Feb 2026', title: 'Super nočitev za raziskovanje hribov', score: '10', badge: 'Izjemno' },
+  { name: 'Boštjan', type: 'Soba', stay: '1 noč', client: 'Par', date: 'Avg 2025', title: 'Osebje zelo prijazno, odličen zajtrk.', score: '10', badge: 'Izjemno' },
+  { name: 'Tone', type: 'Soba', stay: '2 noči', client: 'Skupina', date: 'Nov 2024', title: 'Odlična hrana in mirna okolica so razlog, da se vračamo.', score: '10', badge: 'Izjemno' },
+  { name: 'Vlasta', type: 'Soba', stay: '1 noč', client: 'Par', date: 'Nov 2024', title: 'Hrana vrhunska.', score: '10', badge: 'Izjemno' },
+  { name: 'Milan', type: 'Soba', stay: '1 noč', client: 'Par', date: 'Okt 2024', title: 'Odlična lokacija, osebje in hrana.', score: '10', badge: 'Izjemno' },
+  { name: 'Korotaj', type: 'Soba', stay: '1 noč', client: 'Par', date: 'Okt 2024', title: 'Zajtrk in sproščenost osebja.', score: '9.0', badge: 'Vrhunsko' },
+  { name: 'Tilen', type: 'Soba', stay: '1 noč', client: 'Skupina', date: 'Sep 2024', title: 'Pristnost, domačnost', score: '10', badge: 'Izjemno' },
+  { name: 'Sale75', type: 'Soba', stay: '1 noč', client: 'Solo', date: 'Avg 2024', title: 'Vse, mirna lokacija, prijazno osebje', score: '10', badge: 'Izjemno' },
+  { name: 'Tea', type: 'Soba', stay: '1 noč', client: 'Par', date: 'Maj 2024', title: 'Zelo mirno, nobenih glasnih gostov.', score: '9.0', badge: 'Vrhunsko' },
+  { name: 'Vanessa', type: 'Soba', stay: '1 noč', client: 'Par', date: 'Jul 2023', title: 'Prijaznost osebja je nalezljiva.', score: '10', badge: 'Izjemno' },
+];
 
 export default function Home() {
   useSeo(
@@ -10,6 +44,8 @@ export default function Home() {
     'Divjačinska gostilna, zasebni wellness in prenočišča pod Slavnikom v Podgorju, 20 minut od Kopra in Trsta. Rezervirajte mizo, sobo ali SPA termin.',
   );
   const scrollRef = useRef<HTMLDivElement>(null);
+  const reviewCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeReview, setActiveReview] = useState(0);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -18,6 +54,38 @@ export default function Home() {
       scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
     }
   };
+
+  const scrollToReview = (i: number) => {
+    reviewCardRefs.current[i]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  };
+
+  // Drives the pagination dots from whichever review card is most visible,
+  // so dots stay in sync whether the user drags, scrolls, or clicks a dot.
+  useEffect(() => {
+    const root = scrollRef.current;
+    if (!root) return;
+    const ratios = new Map<number, number>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const idx = Number((entry.target as HTMLElement).dataset.reviewIndex);
+          ratios.set(idx, entry.intersectionRatio);
+        });
+        let best = 0;
+        let bestRatio = -1;
+        ratios.forEach((ratio, idx) => {
+          if (ratio > bestRatio) {
+            bestRatio = ratio;
+            best = idx;
+          }
+        });
+        setActiveReview(best);
+      },
+      { root, threshold: [0.25, 0.5, 0.75, 1] }
+    );
+    reviewCardRefs.current.forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <motion.div 
@@ -30,7 +98,7 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-[#2a1d15]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/client/additional/main-exterior-01.jpg"
+            src="/images/client/additional/main-exterior-01-1920w.webp"
             className="w-full h-full object-cover opacity-40 transition-transform duration-[12000ms] hover:scale-105"
             alt="Gostilna Pod Slavnikom – zunanjost"
             referrerPolicy="no-referrer" fetchPriority="high" decoding="async"
@@ -66,31 +134,46 @@ export default function Home() {
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ delay: 0.8, duration: 1.2 }}
-             className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-16 mt-10 md:mt-20"
+             className="flex flex-wrap lg:flex-nowrap items-center justify-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 mt-10 md:mt-20"
            >
-              <Link to="/restavracija" className="group flex flex-col items-center gap-5">
+              <Link to="/restavracija" className="group flex flex-col items-center gap-5 shrink-0">
                 <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-brand-cream/10 bg-white/5 backdrop-blur-md flex items-center justify-center group-hover:scale-110 group-hover:border-brand-gold transition-all duration-700">
                   <UtensilsCrossed className="w-7 h-7 text-brand-cream group-hover:text-brand-gold transition-colors" />
                 </div>
                 <span className="text-[9px] uppercase tracking-[0.4em] font-bold text-brand-cream/60 group-hover:text-brand-gold transition-colors font-display">Restavracija</span>
               </Link>
 
-              <div className="h-[1px] w-12 bg-brand-gold/20 hidden lg:block"></div>
+              <div className="h-[1px] w-8 bg-brand-gold/20 hidden lg:block shrink-0"></div>
 
-              <Link to="/sobe" className="group flex flex-col items-center gap-5">
+              <Link to="/sobe" className="group flex flex-col items-center gap-5 shrink-0">
                 <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-brand-cream/10 bg-white/5 backdrop-blur-md flex items-center justify-center group-hover:scale-110 group-hover:border-brand-gold transition-all duration-700">
                   <Bed className="w-7 h-7 text-brand-cream group-hover:text-brand-gold transition-colors" />
                 </div>
                 <span className="text-[9px] uppercase tracking-[0.4em] font-bold text-brand-cream/60 group-hover:text-brand-gold transition-colors font-display">Prenočišča</span>
               </Link>
 
-              <div className="h-[1px] w-12 bg-brand-gold/20 hidden lg:block"></div>
+              <div className="h-[1px] w-8 bg-brand-gold/20 hidden lg:block shrink-0"></div>
 
-              <Link to="/spa" className="group flex flex-col items-center gap-5">
+              <Link to="/spa" className="group flex flex-col items-center gap-5 shrink-0">
                 <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-brand-cream/10 bg-white/5 backdrop-blur-md flex items-center justify-center group-hover:scale-110 group-hover:border-brand-gold transition-all duration-700">
                   <Sparkles className="w-7 h-7 text-brand-cream group-hover:text-brand-gold transition-colors" />
                 </div>
                 <span className="text-[9px] uppercase tracking-[0.4em] font-bold text-brand-cream/60 group-hover:text-brand-gold transition-colors font-display">Privatni SPA</span>
+              </Link>
+
+              <div className="h-[1px] w-8 bg-brand-gold/20 hidden lg:block shrink-0"></div>
+
+              <Link to="/restavracija#medvedja-vecerja" className="group flex flex-col items-center gap-5 shrink-0">
+                <div className="relative">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-brand-gold/50 bg-white/5 backdrop-blur-md flex items-center justify-center group-hover:scale-110 group-hover:border-brand-gold transition-all duration-700">
+                    <PawPrint className="w-7 h-7 text-brand-gold transition-colors" />
+                  </div>
+                  <span
+                    className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-brand-gold shadow-[0_0_8px_rgba(196,163,90,0.9)]"
+                    aria-hidden="true"
+                  ></span>
+                </div>
+                <span className="text-[9px] uppercase tracking-[0.4em] font-bold text-brand-cream/60 group-hover:text-brand-gold transition-colors font-display">Medvedja večerja</span>
               </Link>
            </motion.div>
         </div>
@@ -106,25 +189,23 @@ export default function Home() {
       <section className="py-24 md:py-28 px-6 bg-brand-cream relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-gold/5 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/3"></div>
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24 items-center">
-           <div className="lg:w-1/2 relative group">
+           <div className="w-full lg:w-1/2 relative group">
               <div className="absolute -inset-4 border border-brand-gold/10 rounded-[64px] -z-10 group-hover:inset-0 transition-all duration-1000"></div>
-              <div className="overflow-hidden rounded-[80px] luxury-shadow">
-                <img src="/images/client/additional/restaurant-01.jpg" className="w-full aspect-[4/5] object-cover transition-transform duration-[3s] group-hover:scale-105" alt="Restavracija Pod Slavnikom" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
-              </div>
+              <ImageSlider images={RESTAVRACIJA_SLIDES} aspectClassName="aspect-[4/5]" roundedClassName="rounded-[80px]" label="Slike restavracije Pod Slavnikom" priority />
               <div className="absolute -bottom-10 -left-10 w-32 h-32 gold-badge rotate-[15deg] z-10 border-4 border-brand-cream shadow-2xl">
                  <span className="text-[10px] uppercase font-bold tracking-widest text-brand-wood leading-tight text-center">Pristni<br/>Okusi</span>
               </div>
            </div>
-           
+
            <div className="lg:w-1/2">
               <span className="text-brand-gold text-[10px] uppercase tracking-[0.5em] font-bold block mb-8 font-display">Okusite tradicijo</span>
               <h2 className="text-6xl md:text-7xl font-serif mb-10 leading-[0.85] tracking-tighter italic">Restavracija <br /> <span className="not-italic">& Kulinarika.</span></h2>
               <div className="w-20 h-[1px] bg-brand-gold mb-10"></div>
               <p className="text-brand-stone text-xl mb-12 leading-relaxed font-serif max-w-xl">
-                Divjačina po receptu naših prednikov, ročno izdelane testenine in sveža zelišča z okoliških travnikov. Vsak krožnik je poklon naravi pod Slavnikom.
+                Divjačina po receptu naših prednikov ter ročno izdelani domači njoki, fuži in ravioli, katerih nadevi se spreminjajo s sezono – od belušev do tartufov. Sveža zelišča z okoliških travnikov dopolnjujejo vsak krožnik, ki je poklon naravi pod Slavnikom.
               </p>
               <div className="space-y-6 mb-16">
-                 {['Divjačinski golaž z dolgotrajno pripravo', 'Domači ravioli in njoki babice Marije', 'Sezonske dobrote iz okoliških gozdov'].map((item, i) => (
+                 {['Divjačinski golaž z dolgotrajno pripravo', 'Domači njoki, fuži in ravioli', 'Sezonske dobrote iz okoliških gozdov'].map((item, i) => (
                    <div key={i} className="flex items-center gap-4 group">
                       <div className="w-1.5 h-1.5 rounded-full bg-brand-gold group-hover:scale-150 transition-transform"></div>
                       <span className="text-[11px] uppercase tracking-widest font-bold text-brand-wood/80">{item}</span>
@@ -143,16 +224,14 @@ export default function Home() {
       <section className="py-24 md:py-28 px-6 bg-brand-wood text-brand-cream relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none grain-texture"></div>
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row-reverse gap-24 items-center">
-           <div className="lg:w-1/2 relative group">
+           <div className="w-full lg:w-1/2 relative group">
               <div className="absolute -inset-4 border border-brand-gold/20 rounded-[100px] -z-10 group-hover:inset-0 transition-all duration-1000"></div>
-              <div className="overflow-hidden rounded-[100px] luxury-shadow">
-                <img src="/images/client/additional/main-exterior-03.jpg" className="w-full aspect-[4/5] object-cover object-center transition-transform duration-[3s] group-hover:scale-105" alt="Gostišče s prenočišči Pod Slavnikom" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
-              </div>
+              <ImageSlider images={PRENOCISCA_SLIDES} aspectClassName="aspect-[4/5]" roundedClassName="rounded-[100px]" label="Slike sob Pod Slavnikom" />
               <div className="absolute -top-12 -right-12 w-44 h-44 bg-brand-gold/90 backdrop-blur-md rounded-full flex items-center justify-center -rotate-12 border-4 border-brand-wood shadow-2xl p-8 animate-pulse-slow">
                  <p className="text-[10px] uppercase font-black tracking-widest text-brand-wood leading-tight text-center font-display">Spanje v objemu narave</p>
               </div>
            </div>
-           
+
            <div className="lg:w-1/2">
               <span className="text-brand-gold text-[10px] uppercase tracking-[0.5em] font-bold block mb-8 font-display">Mir & Počitek</span>
               <h2 className="text-6xl md:text-7xl font-serif mb-10 leading-[0.85] tracking-tighter italic">Prenočišča <br /> <span className="not-italic">& Sanje.</span></h2>
@@ -182,17 +261,15 @@ export default function Home() {
       <section className="py-24 md:py-28 px-6 bg-brand-cream relative overflow-hidden">
         <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-brand-gold/5 blur-[120px] rounded-full translate-y-1/3 -translate-x-1/2"></div>
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24 items-center">
-           <div className="lg:w-1/2 relative group">
+           <div className="w-full lg:w-1/2 relative group">
               <div className="absolute -inset-4 border border-brand-gold/10 rounded-[80px] -z-10 group-hover:inset-0 transition-all duration-1000"></div>
-              <div className="overflow-hidden rounded-[80px] luxury-shadow">
-                <img src="/images/client/wellness/wellness-private-spa-01.jpg" className="w-full aspect-[16/10] lg:aspect-square object-cover object-center transition-transform duration-[3s] group-hover:scale-105" alt="Privatni SPA & wellness Pod Slavnikom" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
-              </div>
+              <ImageSlider images={SPA_SLIDES} aspectClassName="aspect-[16/10] lg:aspect-square" roundedClassName="rounded-[80px]" label="Slike zasebnega SPA & wellnessa Pod Slavnikom" />
               <div className="absolute top-10 right-10 flex items-center gap-2 bg-brand-wood/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
                  <div className="w-2.5 h-2.5 rounded-full bg-brand-gold animate-ping"></div>
                  <span className="text-[9px] uppercase tracking-widest font-bold text-brand-cream">Popolna zasebnost</span>
               </div>
            </div>
-           
+
            <div className="lg:w-1/2">
               <span className="text-brand-gold text-[10px] uppercase tracking-[0.5em] font-bold block mb-8 font-display">Sprostitev</span>
               <h2 className="text-6xl md:text-7xl font-serif mb-10 leading-[0.85] tracking-tighter italic">Privatni SPA <br /> <span className="not-italic">& Wellness.</span></h2>
@@ -349,27 +426,18 @@ export default function Home() {
               </button>
             </div>
 
-            <div 
+            <div
               ref={scrollRef}
               className="flex gap-4 md:gap-6 overflow-x-auto pb-12 snap-x snap-mandatory hide-scrollbar group cursor-grab active:cursor-grabbing px-4"
             >
-              {[
-                { name: 'Jana', type: 'Soba', stay: '1 noč', client: 'Par', date: 'Feb 2026', title: 'Super nočitev za raziskovanje hribov', score: '10', badge: 'Izjemno' },
-                { name: 'Boštjan', type: 'Soba', stay: '1 noč', client: 'Par', date: 'Avg 2025', title: 'Osebje zelo prijazno, odličen zajtrk.', score: '10', badge: 'Izjemno' },
-                { name: 'Tone', type: 'Soba', stay: '2 noči', client: 'Skupina', date: 'Nov 2024', title: 'Odlična hrana in mirna okolica so razlog, da se vračamo.', score: '10', badge: 'Izjemno' },
-                { name: 'Vlasta', type: 'Soba', stay: '1 noč', client: 'Par', date: 'Nov 2024', title: 'Hrana vrhunska.', score: '10', badge: 'Izjemno' },
-                { name: 'Milan', type: 'Soba', stay: '1 noč', client: 'Par', date: 'Okt 2024', title: 'Odlična lokacija, osebje in hrana.', score: '10', badge: 'Izjemno' },
-                { name: 'Korotaj', type: 'Soba', stay: '1 noč', client: 'Par', date: 'Okt 2024', title: 'Zajtrk in sproščenost osebja.', score: '9.0', badge: 'Vrhunsko' },
-                { name: 'Tilen', type: 'Soba', stay: '1 noč', client: 'Skupina', date: 'Sep 2024', title: 'Pristnost, domačnost', score: '10', badge: 'Izjemno' },
-                { name: 'Sale75', type: 'Soba', stay: '1 noč', client: 'Solo', date: 'Avg 2024', title: 'Vse, mirna lokacija, prijazno osebje', score: '10', badge: 'Izjemno' },
-                { name: 'Tea', type: 'Soba', stay: '1 noč', client: 'Par', date: 'Maj 2024', title: 'Zelo mirno, nobenih glasnih gostov.', score: '9.0', badge: 'Vrhunsko' },
-                { name: 'Vanessa', type: 'Soba', stay: '1 noč', client: 'Par', date: 'Jul 2023', title: 'Prijaznost osebja je nalezljiva.', score: '10', badge: 'Izjemno' }
-              ].map((rev, i) => (
-                <div 
+              {REVIEWS.map((rev, i) => (
+                <div
                   key={i}
+                  ref={(el) => { reviewCardRefs.current[i] = el; }}
+                  data-review-index={i}
                   className="min-w-[260px] md:min-w-[320px] snap-center py-4"
                 >
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, scale: 0.98 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: i * 0.05 }}
@@ -399,6 +467,23 @@ export default function Home() {
                     </div>
                   </motion.div>
                 </div>
+              ))}
+            </div>
+
+            {/* Pagination dots — synced to scroll position via IntersectionObserver */}
+            <div className="flex items-center justify-center gap-2.5 flex-wrap px-4" role="tablist" aria-label="Mnenja gostov, stran">
+              {REVIEWS.map((rev, i) => (
+                <button
+                  key={rev.name + i}
+                  type="button"
+                  role="tab"
+                  aria-selected={i === activeReview}
+                  aria-label={`Mnenje ${i + 1} od ${REVIEWS.length}: ${rev.name}`}
+                  onClick={() => scrollToReview(i)}
+                  className={`h-2 rounded-full transition-all duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold ${
+                    i === activeReview ? 'w-7 bg-brand-gold' : 'w-2 bg-brand-wood/15 hover:bg-brand-gold/50'
+                  }`}
+                />
               ))}
             </div>
           </div>
