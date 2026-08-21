@@ -2,11 +2,25 @@ import { useSeo } from '../lib/seo';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowLeft, Info, Check, ShieldAlert } from 'lucide-react';
+import ImageSlider from '../components/ImageSlider';
 
+/**
+ * Each room carries an `images` array so the detail page renders a gallery as
+ * soon as more photography exists. Only one confidently mapped photo per room
+ * type is available today, so each array currently holds a single entry and
+ * ImageSlider renders it as a plain image (it hides its controls at count 1).
+ * Booking identifiers, slugs and Bentral URLs are business-critical and are
+ * intentionally left exactly as they were.
+ */
 const roomDetails = {
   'enoposteljna-soba-5': {
     name: 'Enoposteljna soba 5 (1+0)',
-    image: '/images/client/rooms/single-room-hero-temporary.jpg',
+    images: [
+      {
+        src: '/images/client/rooms/single-room-hero-temporary-1600w.webp',
+        alt: 'Enoposteljna soba 5 z leseno posteljo in oknom',
+      },
+    ],
     tag: 'Enoposteljna',
     meta: '1 oseba · 1+0',
     desc: 'Udobna in mirna enoposteljna soba (Soba 5), opremljena z naravnimi materiali. Popolna izbira za samostojne popotnike, planince in vse, ki si želijo miren kotiček za počitek po raziskovanju okolice Slavnika.',
@@ -18,7 +32,12 @@ const roomDetails = {
   },
   'dvoposteljna-soba': {
     name: 'Dvoposteljna soba 1, 2, 3, 4 (2+0)',
-    image: '/images/client/rooms/double-room-hero.jpg',
+    images: [
+      {
+        src: '/images/client/rooms/double-room-hero-1600w.webp',
+        alt: 'Dvoposteljna soba z ločenima ležiščema in lesenim pohištvom',
+      },
+    ],
     tag: 'Dvoposteljna',
     meta: '2 osebi · 2+0',
     desc: 'Prijetne dvoposteljne sobe (Sobe 1, 2, 3, 4) s toplim lesenim pohištvom in umerjeno svetlobo. Ponujajo vso potrebno udobje za sproščen oddih pod Slavnikom.',
@@ -30,7 +49,12 @@ const roomDetails = {
   },
   'podstresna-suite': {
     name: 'Studio s prosto stoječo kadjo',
-    image: '/images/client/rooms/studio-hero.jpg',
+    images: [
+      {
+        src: '/images/client/rooms/studio-hero-1600w.webp',
+        alt: 'Studio s prosto stoječo kadjo, posteljo in sedežno garnituro pod poševnim stropom',
+      },
+    ],
     tag: 'Ekskluzivno',
     meta: '2 osebi · Studio',
     desc: 'Čudovit in romantičen studio, katerega osrednji del je prosto stoječa kad za vrhunsko sprostitev v dvoje. Popolno gnezdo za nepozabne trenutke.',
@@ -189,9 +213,16 @@ export default function RoomDetail() {
           
           {/* Room info (left side) */}
           <div className="lg:col-span-7 space-y-8 lg:sticky lg:top-32 h-fit">
-            <div className="aspect-[4/3] rounded-[32px] overflow-hidden border border-brand-gold/15 relative luxury-shadow">
-              <img src={room.image} alt={room.name} className="w-full h-full object-cover" />
-              <div className="absolute top-6 left-6 bg-brand-gold text-brand-wood text-[9px] uppercase tracking-widest font-bold px-4 py-2 rounded-full shadow-md">
+            <div className="relative">
+              <ImageSlider
+                images={room.images}
+                aspectClassName="aspect-[4/3]"
+                roundedClassName="rounded-[32px]"
+                className="border border-brand-gold/15"
+                label={`Slike – ${room.name}`}
+                priority
+              />
+              <div className="absolute top-6 left-6 z-20 bg-brand-gold text-brand-wood text-[9px] uppercase tracking-widest font-bold px-4 py-2 rounded-full shadow-md">
                 {room.tag}
               </div>
             </div>

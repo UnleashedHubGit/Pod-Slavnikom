@@ -1,6 +1,27 @@
 import { useSeo } from '../lib/seo';
 import { motion } from 'motion/react';
-import { Sparkles, Heart, Info } from 'lucide-react';
+import { Info } from 'lucide-react';
+import ImageSlider from '../components/ImageSlider';
+
+/**
+ * Owner-confirmed wellness photography, lead slide first: the whole-space view
+ * communicates "private spa for two" better than any single fixture does.
+ * All three crop cleanly at 4:3, so no per-image object-position is needed.
+ */
+const SPA_SLIDES = [
+  {
+    src: '/images/client/wellness/wellness-private-spa-01-1600w.webp',
+    alt: 'Zasebni wellness Pod Slavnikom: jacuzzi, grelna ležalnika in parna kabina',
+  },
+  {
+    src: '/images/client/wellness/wellness-sauna-01-1600w.webp',
+    alt: 'Finska savna z lesenimi klopmi in pogledom na jacuzzi',
+  },
+  {
+    src: '/images/client/wellness/wellness-steam-cabin-01-1600w.webp',
+    alt: 'Parna kopel z barvno terapijo',
+  },
+];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -82,37 +103,19 @@ export default function Spa() {
             </div>
           </div>
 
+          {/* One large gallery instead of the previous small mosaic: the owner
+              asked for the wellness photos to be visible at a proper size, and
+              the three-tile mosaic rendered the whole-space shot at ~278x185
+              on a 1440px screen. */}
           <div className="lg:col-span-7 relative w-full">
-            {/* Mosaic of Images as specified in HTML */}
-            <div className="grid grid-cols-2 gap-4 aspect-square max-w-xl mx-auto">
-              <div className="row-span-2 rounded-[40px] overflow-hidden luxury-shadow group relative border border-brand-gold/10">
-                <img 
-                  src="/images/client/wellness/wellness-sauna-01.jpg"
-                  className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
-                  alt="Finska savna" 
-                  referrerPolicy="no-referrer" loading="lazy" decoding="async"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-              </div>
-              <div className="rounded-[40px] overflow-hidden luxury-shadow group relative border border-brand-gold/10">
-                <img 
-                  src="/images/client/wellness/wellness-steam-cabin-01.jpg"
-                  className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
-                  alt="Parna kopel" 
-                  referrerPolicy="no-referrer" loading="lazy" decoding="async"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-              </div>
-              <div className="rounded-[40px] overflow-hidden luxury-shadow group relative border border-brand-gold/10">
-                <img 
-                  src="/images/client/wellness/wellness-private-spa-01.jpg"
-                  className="w-full h-full object-cover transition-transform duration-[6s] group-hover:scale-105" 
-                  alt="Jacuzzi" 
-                  referrerPolicy="no-referrer" loading="lazy" decoding="async"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
-              </div>
-            </div>
+            <ImageSlider
+              images={SPA_SLIDES}
+              aspectClassName="aspect-[4/3]"
+              roundedClassName="rounded-[40px]"
+              className="border border-brand-gold/10"
+              label="Slike zasebnega wellnessa Pod Slavnikom"
+              priority
+            />
           </div>
         </div>
       </section>

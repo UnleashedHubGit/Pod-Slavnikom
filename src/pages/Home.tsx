@@ -343,7 +343,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24 items-center relative z-10">
            <div className="lg:w-1/2 relative group">
               <div className="overflow-hidden rounded-[100px] luxury-shadow border border-white/5">
-                <img src="/images/client/additional/main-exterior-04.jpg" className="w-full aspect-[4/5] object-cover transition-transform duration-[5s] group-hover:scale-105" alt="Pod Slavnikom pod pobočjem Slavnika" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
+                {/* Replaces the previous roadside gate/exterior photo, which the
+                    owner flagged as unrelated to this part of the page. This is a
+                    real Pod Slavnikom asset showing the Slavnik viewpoint the
+                    surrounding copy actually describes. */}
+                <img src="/images/client/surroundings/slavnik-bench-view.webp" className="w-full aspect-[4/5] object-cover transition-transform duration-[5s] group-hover:scale-105" alt="Razgled s klopi pri Tumovi koči na Slavniku proti Kraškemu robu in morju" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
               </div>
               {/* The badge hangs -40px off its column and the -rotate-6 adds ~8px
                   of bleed, so it needs ~49px of container inset to clear the
