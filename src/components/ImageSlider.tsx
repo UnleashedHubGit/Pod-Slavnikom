@@ -106,7 +106,10 @@ export default function ImageSlider({
                 aria-label={`Pojdi na sliko ${i + 1}`}
                 aria-current={i === index}
                 onClick={(e) => { e.preventDefault(); goTo(i); }}
-                className={`h-1.5 rounded-full transition-all duration-500 ${i === index ? 'w-6 bg-brand-gold' : 'w-1.5 bg-white/70 hover:bg-white'}`}
+                // The dot stays visually small, but the ::before box gives it a
+                // ~26px tall tap target. Horizontal inset is half the flex gap,
+                // so neighbouring targets meet without overlapping.
+                className={`relative h-1.5 rounded-full transition-all duration-500 before:absolute before:content-[''] before:-inset-y-[10px] before:-inset-x-1 ${i === index ? 'w-6 bg-brand-gold' : 'w-1.5 bg-white/70 hover:bg-white'}`}
               />
             ))}
           </div>

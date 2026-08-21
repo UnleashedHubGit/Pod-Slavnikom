@@ -163,25 +163,25 @@ export default function Contact() {
                 <div className="pt-1">
                    <input type="checkbox" className="w-5 h-5 rounded accent-brand-gold" id="privacy" />
                 </div>
-                <label htmlFor="privacy" className="text-[10px] text-brand-stone leading-relaxed uppercase tracking-widest font-medium font-sans">Strinjam se z <span className="text-brand-gold" title="Dokument bo dodan v končni različici">varstvom osebnih podatkov</span> in pravili uporabe spletne strani.</label>
+                <label htmlFor="privacy" className="text-[10px] text-brand-stone leading-relaxed uppercase tracking-widest font-medium font-sans">Strinjam se z <span className="text-brand-gold">varstvom osebnih podatkov</span> in pravili uporabe spletne strani.</label>
               </div>
               <div className="rounded-3xl bg-brand-warm-gray/60 border border-brand-gold/15 p-6 flex items-start gap-4">
                 <Info className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" aria-hidden="true" />
                 <p className="text-xs text-brand-stone leading-relaxed font-sans">
-                  Spletno pošiljanje sporočil bo omogočeno v končni različici spletne strani. Do takrat vas prosimo, da nas za rezervacije in povpraševanja pokličete na <a href="tel:+38641321379" className="text-brand-gold font-semibold hover:underline">+386 41 321 379</a> ali pišete na <a href="mailto:podslavnikom@gmail.com" className="text-brand-gold font-semibold hover:underline">podslavnikom@gmail.com</a>.
+                  Za rezervacije in povpraševanja nas lahko kontaktirate po telefonu na <a href="tel:+38641321379" className="text-brand-gold font-semibold hover:underline">+386 41 321 379</a> ali po e-pošti na <a href="mailto:podslavnikom@gmail.com" className="text-brand-gold font-semibold hover:underline">podslavnikom@gmail.com</a>.
                 </p>
               </div>
               <div className="space-y-4">
                 <button
                   type="submit"
                   disabled
-                  title="Spletno pošiljanje bo omogočeno v končni različici"
+                  title="Povpraševanja sprejemamo po telefonu in e-pošti"
                   className="w-full bg-brand-stone/25 text-brand-wood/50 px-12 py-8 rounded-full text-xs uppercase tracking-[0.5em] font-black font-display cursor-not-allowed flex items-center justify-center gap-6 border border-brand-wood/10"
                 >
                   Pošljite sporočilo <Send className="w-5 h-5" aria-hidden="true" />
                 </button>
                 <p className="text-center text-[10px] uppercase tracking-[0.3em] font-bold text-brand-stone/60 font-display">
-                  Pošiljanje še ni na voljo
+                  Povpraševanja sprejemamo po telefonu in e-pošti
                 </p>
               </div>
             </form>

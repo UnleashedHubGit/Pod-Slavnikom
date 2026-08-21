@@ -397,7 +397,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-24">
             <div className="flex justify-center items-center gap-6 mb-10">
-               <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Booking.com_logo.svg" className="h-5" alt="Booking.com logo" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
+               {/* Self-hosted rather than hotlinked from Wikimedia: the reviews
+                   block should not depend on a third-party host staying up. */}
+               <img src="/images/vendor/booking-com-logo.svg" className="h-5" alt="Booking.com" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                <div className="w-12 h-[1px] bg-brand-gold/20"></div>
                <div className="flex gap-1">
                   {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 text-brand-gold fill-current" />)}
@@ -484,7 +486,9 @@ export default function Home() {
                   aria-selected={i === activeReview}
                   aria-label={`Mnenje ${i + 1} od ${REVIEWS.length}: ${rev.name}`}
                   onClick={() => scrollToReview(i)}
-                  className={`h-2 rounded-full transition-all duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold ${
+                  // Visual size unchanged; ::before supplies a ~26px tall tap
+                  // target so the dots are usable on a phone.
+                  className={`relative h-2 rounded-full transition-all duration-500 before:absolute before:content-[''] before:-inset-y-[9px] before:-inset-x-[5px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold ${
                     i === activeReview ? 'w-7 bg-brand-gold' : 'w-2 bg-brand-wood/15 hover:bg-brand-gold/50'
                   }`}
                 />

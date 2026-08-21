@@ -253,7 +253,7 @@ export default function Packages() {
             <div className="pt-4 border-t border-brand-gold/15 space-y-6">
               <p className="flex items-start gap-3 text-xs text-brand-cream/60 leading-relaxed max-w-2xl">
                 <Info className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" aria-hidden="true" />
-                <span>Spletni nakup darilnega bona bo omogočen v končni različici spletne strani. Do takrat vas prosimo za povpraševanje po e-pošti.</span>
+                <span>Darilne bone urejamo po e-pošti. Pišite nam in pripravimo bon po vaši želji.</span>
               </p>
               <a
                 href={VOUCHER_MAIL_HREF}

@@ -129,7 +129,7 @@ export default function About() {
       {/* Atmospheric Full Screen Photo */}
       <section className="h-[60vh] relative overflow-hidden">
          <img
-           src="/images/client/additional/main-exterior-03.jpg"
+           src="/images/client/additional/main-exterior-03-1920w.webp"
            className="w-full h-full object-cover transition-transform duration-[10s] hover:scale-105"
            alt="Pod Slavnikom Okolica"
            referrerPolicy="no-referrer" loading="lazy" decoding="async"
